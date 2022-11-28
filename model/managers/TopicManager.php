@@ -18,5 +18,18 @@
             parent::connect();
         }
 
+        /* Méthode pour trouver tous les sujets d'une catégorie */
+        public function findTopicsByCategorie($id){
+
+            $sql = "SELECT *
+            FROM ".$this->tableName."p
+            WHERE p.categorie_id = :id";
+
+            return $this->getMultipleResults(
+                DAO::select($sql, ['id' => $id]),
+                $this->className
+            );
+
+        }
 
     }
