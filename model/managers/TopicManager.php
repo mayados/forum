@@ -3,7 +3,6 @@
     
     use App\Manager;
     use App\DAO;
-    use Model\Managers\TopicManager;
 
     /* Topic Manager hérite de la class Manager pour bénéficier des méthodes pré-établies : findAll, findOneById.. */
     class TopicManager extends Manager{
@@ -21,10 +20,12 @@
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
 
-            $sql = "SELECT *
-            FROM ".$this->tableName."p
-            WHERE p.categorie_id = :id";
+            $sql = "SELECT titre, dateCreation, id_sujet
+            FROM ".$this->tableName."
+            WHERE categorie_id = :id
+            ORDER BY dateCreation DESC";
 
+            /* Plusieurs objets sont attendus car il y a plusieurs topics */
             return $this->getMultipleResults(
                 DAO::select($sql, ['id' => $id]),
                 $this->className
