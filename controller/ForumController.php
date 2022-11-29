@@ -11,6 +11,8 @@
 use Model\Managers\CategorieManager;
 use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
+    use Model\Managers\UserManager;
+
     
     /* ForumController a pour class mère AbstractController */
     /* On utlise la méthode index() vide créée dans ControllerInterface */
@@ -18,6 +20,8 @@ use Model\Managers\TopicManager;
 
         /* La méthode index n'est pas obligatoire , mais il faut la mettre car on implémente ControllerInterface */
         public function index(){}
+
+        
 
         /* On crée une fonction qui permet de lister toutes les catégories */
         public function listCategories(){
@@ -34,8 +38,36 @@ use Model\Managers\TopicManager;
 
         }
 
-        /* Fonction qui permet de lister les sujets par catégorie */
+        /* Fonction pour afficher les topics présents dans une catégorie */
+        public function detailCategorie(){
+        /* On doit récupérer l'id envoyé dans le lien */
+        $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
-        
+        $topicManager = new TopicManager();
+
+        return [
+            "view" => VIEW_DIR . "forum/detailCategorie.php",
+            "data" => [
+                "topics" => $topicManager->findTopicsByCategorie($id)
+            ]
+        ];
+
+        }
+
+
+        public function detailTopic(){
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $postManager = new PostManager();
+
+            return [
+                "view" => VIEW_DIR . "forum/detailTopic.php",
+                "data" => [
+                "posts" => $postManager->findPostsByTopic($id)
+                ]
+            ];
+
+        }
 
     }
