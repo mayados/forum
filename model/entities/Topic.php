@@ -15,7 +15,7 @@
 
         /* Prend des tableaux associatifs et les transforme en objets ou tableaux d'objets (exemple : pour accéder à une propriété on va manipuler une méthode de l'objet ex ->get...) */
         public function __construct($data){         
-            $this->hydrate($data);        
+            $this->hydrate($data);  
         }
  
         /**
@@ -39,7 +39,7 @@
         }
 
         /**
-         * Get the value of title
+         * Get the value of titre
          */ 
         public function getTitre()
         {
@@ -47,7 +47,7 @@
         }
 
         /**
-         * Set the value of title
+         * Set the value of titre
          *
          * @return  self
          */ 
