@@ -1,5 +1,5 @@
 <?php
-    /* Les controllers se contentent de réceptionner la requête demandée par le client, interrogent le manager adéquat, et envoient les infos à la vue */
+    /* Les controllers se contentent de réceptionner la requête demandée par le client, interrogent le manager adéquat, et envoient les infos à la vue = cherchent les infos et redirigent*/
 
     /* cette class sera contenue dans le namespace Controller */
     namespace Controller;
@@ -8,26 +8,33 @@
     use App\Session;
     use App\AbstractController;
     use App\ControllerInterface;
-    use Model\Managers\TopicManager;
+use Model\Managers\CategorieManager;
+use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
     
     /* ForumController a pour class mère AbstractController */
     /* On utlise la méthode index() vide créée dans ControllerInterface */
     class ForumController extends AbstractController implements ControllerInterface{
 
-        public function index(){
-          
+        /* La méthode index n'est pas obligatoire , mais il faut la mettre car on implémente ControllerInterface */
+        public function index(){}
 
-           $topicManager = new TopicManager();
-
+        /* On crée une fonction qui permet de lister toutes les catégories */
+        public function listCategories(){
+            /* On crée une instance de class de l'objet qui a les requêtes voulues */
+            $categorieManager = new CategorieManager();
+            /* On redirige vers la vue correspondante, ici c'est listCategories.php */
+            /* Le nom des datas envoyées est "categories", qui fait appelle à la méthode findAll de l'instance $categorieManager, avec la colonne souhaitée. findAll est présente dans la class Manager du dossier App. MAIS comme CategorieManager a pour class mère Manager, on a accès à cette fonction */
             return [
-                "view" => VIEW_DIR."forum/listTopics.php",
+                "view" => VIEW_DIR . "forum/listCategories.php",
                 "data" => [
-                    "topics" => $topicManager->findAll(["dateCreation", "DESC"])
+                    "categories" => $categorieManager->findAll(["nomCategorie","ASC"])
                 ]
             ];
-        
+
         }
+
+        /* Fonction qui permet de lister les sujets par catégorie */
 
         
 
