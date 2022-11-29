@@ -1,4 +1,7 @@
 <?php
+
+        /*  On appelera les méthodes voulues dans les view, qui seront hydratées avec les datas reçues */
+
     namespace Model\Entities;
 
     use App\Entity;
