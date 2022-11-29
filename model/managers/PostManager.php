@@ -20,9 +20,9 @@
         /* Méthode pour trouver tous les posts d'un topic */
         public function findPostsByTopic($id){
 
-            $sql = "SELECT *
-            FROM ".$this->tableName."p
-            WHERE p.topic_id = :id";
+            $sql = "SELECT texte, dateCreation
+            FROM ".$this->tableName."
+            WHERE sujet_id = :id";
 
             return $this->getMultipleResults(
                 DAO::select($sql, ['id' => $id]),
