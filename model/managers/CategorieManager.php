@@ -20,18 +20,5 @@
             parent::connect();
         }
 
-        /* Méthode pour trouver tous les posts d'un topic */
-        public function findPostsByTopic($id){
-
-            $sql = "SELECT *
-            FROM ".$this->tableName."p
-            WHERE p.topic_id = :id";
-
-            return $this->getMultipleResults(
-                DAO::select($sql, ['id' => $id]),
-                $this->className
-            );
-
-        }
 
     }
