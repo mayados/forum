@@ -22,7 +22,8 @@
 
             $sql = "SELECT texte, dateCreation
             FROM ".$this->tableName."
-            WHERE sujet_id = :id";
+            WHERE sujet_id = :id
+            ORDER BY dateCreation ASC";
 
             return $this->getMultipleResults(
                 DAO::select($sql, ['id' => $id]),
