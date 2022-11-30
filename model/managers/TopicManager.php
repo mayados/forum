@@ -17,6 +17,17 @@
             parent::connect();
         }
 
+        public function listTopics(){
+            $sql = "SELECT titre
+            FROM ".$this->tableName."";
+
+            /* Plusieurs objets sont attendus car il y a plusieurs topics */
+            return $this->getMultipleResults(
+                DAO::select($sql),
+                $this->className
+            );  
+        }
+
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
 
