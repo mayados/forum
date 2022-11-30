@@ -87,6 +87,8 @@ use Model\Managers\TopicManager;
         /* Fonction pour créer un nouveau topic et un premier message sur ce dernier */
 
         public function nouveauTopic(){
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
             /* Il faut un la class TopicManager car insérer un nouveau topic en bdd concerne le topic */
             $topicManager = new TopicManager();
 
@@ -95,9 +97,9 @@ use Model\Managers\TopicManager;
 
             /* Avec la fonction add, faire un tableau associatif colonne -> valeur */
             return [
-                "view" => VIEW_DIR . "forum/detailTopic.php",
+                "view" => VIEW_DIR . "forum/listCategories.php",
                 "data" => [
-                "addTopic" => $postManager->add()
+                "topics" => $topicManager->insertTopic($id)
                 ]
             ];
         }
