@@ -63,7 +63,8 @@
                     return $this->getMultipleResults(
                         DAO::select($sql,['titre' => $titre,'id'=>$id]),
                         $this->className
-                    );   
+                    );  
+                    
 
                 }
 
