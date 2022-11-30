@@ -38,6 +38,20 @@ use Model\Managers\TopicManager;
 
         }
 
+        /* On crée une fonction qui permet de lister tous les topics = sujets */
+        public function listTopics(){
+            $topicManager = new TopicManager();
+            /* On redirige vers la vue correspondante, ici c'est listCategories.php */
+            /* Le nom des datas envoyées est "categories", qui fait appelle à la méthode findAll de l'instance $categorieManager, avec la colonne souhaitée. findAll est présente dans la class Manager du dossier App. MAIS comme CategorieManager a pour class mère Manager, on a accès à cette fonction */
+            return [
+                "view" => VIEW_DIR . "forum/listTopics.php",
+                "data" => [
+                    "topics" => $topicManager->listTopics()
+                ]
+            ];  
+        }
+
+
         /* Fonction pour afficher les topics présents dans une catégorie */
         public function detailCategorie(){
         /* On doit récupérer l'id envoyé dans le lien */
@@ -68,6 +82,24 @@ use Model\Managers\TopicManager;
                 ]
             ];
 
+        }
+
+        /* Fonction pour créer un nouveau topic et un premier message sur ce dernier */
+
+        public function nouveauTopic(){
+            /* Il faut un la class TopicManager car insérer un nouveau topic en bdd concerne le topic */
+            $topicManager = new TopicManager();
+
+            /* Il faut la class PostManager car insérer un nouveau message en bdd */
+            $postManager = new PostManager();
+
+            /* Avec la fonction add, faire un tableau associatif colonne -> valeur */
+            return [
+                "view" => VIEW_DIR . "forum/detailTopic.php",
+                "data" => [
+                "addTopic" => $postManager->add()
+                ]
+            ];
         }
 
     }
