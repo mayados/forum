@@ -44,4 +44,33 @@
 
         }
 
+        public function insertTopic($id){
+            /* Il faut d'abord vérifier que ça a été soumis via le formulaire avec les données que l'on souhaite */
+            if(isset($_POST['submit'])){
+
+                $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+                // $message = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                /* S'il y a la donnée titre */
+                if($titre){
+
+                    /* Voir si les simple quotes ne posent pas des soucis au moment de l'ajout dans la bdd */
+                    $sql = "INSERT INTO
+                    topic(titre,verrouillage,categorie_id,membre_id)
+                    VALUES(:titre,'0',:id,'3')";
+
+                    /* Plusieurs objets sont attendus car il y a plusieurs topics */
+                    return $this->getMultipleResults(
+                        DAO::select($sql,['titre' => $titre,'id'=>$id]),
+                        $this->className
+                    );   
+
+                }
+
+
+            }
+        }
+
+
+
     }
