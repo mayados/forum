@@ -8,7 +8,8 @@
 
         private $id;
         private $titre;
-        private $membre;
+        /* Il faut que le nom de la colonne corresponde au nom de la table, car c'est ainsi que le framework cherche les choses */
+        private $user;
         private $dateCreation;
         private $verrouillage;
         private $categorie;
@@ -61,9 +62,9 @@
         /**
          * Get the value of user
          */ 
-        public function getMembre()
+        public function getUser()
         {
-                return $this->membre;
+                return $this->user;
         }
 
         /**
@@ -71,9 +72,9 @@
          *
          * @return  self
          */ 
-        public function setMembre($membre)
+        public function setUser($user)
         {
-                $this->membre = $membre;
+                $this->user = $user;
 
                 return $this;
         }
