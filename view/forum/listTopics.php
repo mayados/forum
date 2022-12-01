@@ -10,8 +10,10 @@ $topics = $result["data"]['topics'];
 foreach($topics as $topic ){
 
     ?>
-    <p><?=$topic->getTitre()?></p>
+    <p><?=$topic->getTitre()?> (sujet de : <?=$topic->getUser()->getPseudo()?>)</p>
     <?php
+    /* Quand on fait un var_dump de $topic->getUser, on voit qu'il récupère l'objet associé (user), il n'y a donc plus qu'à mettre la propriété que nous souhaitons à partir de cet objet (ici ->getPseudo()) */
+    // var_dump($topic->getUser());
 }
 ?>
 
