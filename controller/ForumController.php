@@ -43,6 +43,7 @@ use Model\Managers\TopicManager;
             $topicManager = new TopicManager();
             /* On redirige vers la vue correspondante, ici c'est listCategories.php */
             /* Le nom des datas envoyées est "categories", qui fait appelle à la méthode findAll de l'instance $categorieManager, avec la colonne souhaitée. findAll est présente dans la class Manager du dossier App. MAIS comme CategorieManager a pour class mère Manager, on a accès à cette fonction */
+           
             return [
                 "view" => VIEW_DIR . "forum/listTopics.php",
                 "data" => [
@@ -95,13 +96,9 @@ use Model\Managers\TopicManager;
             /* Il faut la class PostManager car insérer un nouveau message en bdd */
             $postManager = new PostManager();
 
-            /* Avec la fonction add, faire un tableau associatif colonne -> valeur */
-            return [
-                "view" => VIEW_DIR . "forum/listCategories.php",
-                "data" => [
-                "topics" => $topicManager->insertTopic($id)
-                ]
-            ];
+            /* Ici, on ne redirige pas vers une view car la fonction ne retourne rien, c'est donc à la fonction du topic manager de rediriger */
+            $topicManager->insertTopic($id);
+
         }
 
     }
