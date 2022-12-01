@@ -26,8 +26,8 @@ foreach($topics as $topic ){
     <label for="titre">Titre du topic :</label>
     <input type="text" id="titre" name="titre">
 
-    <label for="">Message</label>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <label for="texte">Message</label>
+    <textarea name="texte" id="texte" cols="30" rows="10"></textarea>
 
     <input name="submit" type="submit" value="Envoyer">
 
