@@ -59,17 +59,16 @@
                     topic(titre,verrouillage,categorie_id,membre_id)
                     VALUES(:titre,'0',:id,'3')";
 
-                    /* Plusieurs objets sont attendus car il y a plusieurs topics */
-                    return $this->getMultipleResults(
-                        DAO::select($sql,['titre' => $titre,'id'=>$id]),
-                        $this->className
-                    );  
-                    
+                    DAO::select($sql,['titre' => $titre,'id'=>$id]);
+                    $this->className;
 
+                    /* Ici, il n'y a pas de return, car on ne veut rien retourner, on veut juste rediriger, étant donné que l'on insert juste en base de données */
+                    header('Location: index.php?ctrl=forum&action=detailCategorie&id='.$id.'');
                 }
 
 
             }
+
         }
 
 
