@@ -17,16 +17,16 @@
             parent::connect();
         }
 
-        public function listTopics(){
-            $sql = "SELECT titre
-            FROM ".$this->tableName."";
+        // public function listTopics(){
+        //     $sql = "SELECT titre
+        //     FROM ".$this->tableName."";
 
-            /* Plusieurs objets sont attendus car il y a plusieurs topics */
-            return $this->getMultipleResults(
-                DAO::select($sql),
-                $this->className
-            );  
-        }
+        //     /* Plusieurs objets sont attendus car il y a plusieurs topics */
+        //     return $this->getMultipleResults(
+        //         DAO::select($sql),
+        //         $this->className
+        //     );  
+        // }
 
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
@@ -49,10 +49,14 @@
             if(isset($_POST['submit'])){
 
                 $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
-                // $message = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_SPECIAL_CHARS);
+
 
                 /* S'il y a la donnée titre */
                 if($titre){
+
+                    $postManager = new PostManager();
 
                     /* Voir si les simple quotes ne posent pas des soucis au moment de l'ajout dans la bdd */
                     $sql = "INSERT INTO
@@ -60,6 +64,15 @@
                     VALUES(:titre,'0',:id,'3')";
 
                     DAO::select($sql,['titre' => $titre,'id'=>$id]);
+                    $this->className;
+
+                    /* Trouver un moyen de mettre le dernier id inséré avec */
+
+                    $insertMessage = "INSERT INTO
+                    post(texte,sujet_id,membre_id)
+                    VALUES(:texte,:id,'3')"; 
+
+                    DAO::select($insertMessage,['texte' => $texte,'id'=>$id]);
                     $this->className;
 
                     /* Ici, il n'y a pas de return, car on ne veut rien retourner, on veut juste rediriger, étant donné que l'on insert juste en base de données */
