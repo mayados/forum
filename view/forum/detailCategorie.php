@@ -1,6 +1,7 @@
 <?php
 
 $topics = $result["data"]['topics'];
+/* On peut récupérer l'id de la catégorie grâce à l'id placé dans le lien de la  page listCategories.php */
 $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
     
 ?>
@@ -11,7 +12,7 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a><?= $topic->getDateCreation() ?> (posté par <?=$topic->getUser()->getPseudo()?>)</p>
+    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a><?= $topic->getDateCreation() ?> (posté par <?=$topic->getUser()->getPseudo()?></p>
 
     <?php
 }
@@ -20,7 +21,7 @@ foreach($topics as $topic ){
 
 <h4>Ajouter un nouveau topic :</h4>
 
-    
+
 <form action="index.php?ctrl=forum&action=nouveauTopic&id=<?= $idCategorie ?>" method="post">
 
     <label for="titre">Titre du topic :</label>
