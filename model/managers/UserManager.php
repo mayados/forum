@@ -20,7 +20,16 @@
         public function mails($mail){
             $sql = "SELECT mail
             FROM ".$this->tableName."
-            WHERE mail = $mail";
+            WHERE mail = :mail";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['mail' => $mail]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+        
         }
+
+
 
     }
