@@ -31,6 +31,9 @@
                 ]; 
             }
 
+
+                                 /*******  INSCRIPTION **********/
+
         public function register(){
 
 
@@ -46,32 +49,75 @@
 
                 if($pseudo && $mail && $password && $password2){
 
-                    /* On vérifie que l'utilisateur n'existe pas (mail) && que le pseudo n'existe pas*/
+                    /* On vérifie que l'utilisateur n'existe pas (mail) && que le pseudo n'existe pas && que les deux password correspondent*/
                      if($userManager->mails($mail)==NULL && $userManager->pseudos($pseudo)==NULL && $password2===$password){
                        /* Si toutes les conditions du dessus sont vérifiées, on hash le mot de pass (le 1er car le 2eme sert uniquement à la comparaison) avec un algo (2eme parametre de la function) */
-                        password_hash($password,PASSWORD_BCRYPT);
-                        var_dump("bien joué");
+                        $passwordH = password_hash($password,PASSWORD_BCRYPT);
+                        /* C'est le mot de passe haché que l'on stocke en bdd */
+                        $userManager->add(['pseudo'=>$pseudo,'mail'=>$mail,'password'=>$passwordH,'role'=>"role"]);
+
+                        return [
+                            "view" => VIEW_DIR."/security/login.html"
+                        ];  
+
                      }else{
-                        var_dump("les mots de passe ne sont pas les mêmes");
+                        echo "Les informations n'ont pas été saisies correctement ou le mail ou pseudo est déjà pris";
+                        return [
+                            "view" => VIEW_DIR."/security/listCategories.php"
+                        ];  
                      }
-
-                     /* On vérifie que les deux password correspondent */
-
-                     /* On hash le password */
-
-                     /* On ajoute l'user en bdd */
-
-                     /* Redirection dans la foulée vers le formulaire de connexion */
-
                  }
-
-
-                return [
-                    "view" => VIEW_DIR."/security/login.html"
-                ];
 
             }
 
         }
+
+                             /******* CONNEXION *********/
+
+        public function login(){
+
+            $userManager = new UserManager();
+
+            /* On vérifie d'abord que le formulaire voulu a été saisi */
+            if(isset($_POST['submit'])){
+
+                /* On filtre les données */
+                $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
+                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                if($mail && $password){
+
+                    /* On recherche le mot de passe associé à l'adresse mail */
+                    $userManager->findPasswordByMail($mail);
+
+                    /* On recherche l'utilisateur rattaché à l'adresse mail */
+                    $userManager->findUserByMail($mail);
+
+                    /* On vérifie que les mots de passe concordent */
+                    if(password_verify($password, $userManager->findPasswordByMail($mail))==TRUE){
+                    /* Si les mots de passe concordent, on stocke l'user en Session (setUser dans App\Session) */      
+                        echo "Bon password";
+                      /* On redirige sur une page d'accueil */                    
+
+                    }else{
+                        echo "pas le bon password";
+                    }
+                    
+
+
+
+
+
+                }
+
+            }
+
+
+            header('Location: index.php?ctrl=forum&action=listTopics');
+         
+
+        }
+
+
 
  }
