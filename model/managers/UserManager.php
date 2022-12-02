@@ -17,4 +17,10 @@
             parent::connect();
         }
 
+        public function mails($mail){
+            $sql = "SELECT mail
+            FROM ".$this->tableName."
+            WHERE mail = $mail";
+        }
+
     }
