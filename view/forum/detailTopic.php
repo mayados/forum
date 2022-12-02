@@ -1,6 +1,8 @@
 <?php
 
 $posts = $result["data"]['posts'];
+
+// var_dump($posts);
     
 ?>
 
@@ -10,7 +12,7 @@ $posts = $result["data"]['posts'];
 foreach($posts as $post ){
 
     ?>
-    <p><?=$post->getTexte()?> <?= $post->getDateCreation() ?></p>
+    <p><?=$post->getTexte()?> <?= $post->getDateCreation() ?> (posté par <?=$post->getUser()->getPseudo() ?>)</p>
     <?php
 }
 
