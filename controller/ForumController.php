@@ -98,7 +98,29 @@ use Model\Managers\TopicManager;
             $postManager = new PostManager();
 
             /* Ici, on ne redirige pas vers une view car la fonction ne retourne rien, c'est donc à la fonction du topic manager de rediriger */
-            $topicManager->insertTopic($id);
+            // $topicManager->insertTopic($id);
+            //$data = ['username' => 'Squalli', 'password' => 'dfsyfshfbzeifbqefbq', 'email' => 'sql@gmail.com'];
+
+            if(isset($_POST['submit'])){
+
+                $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                /* On déclare une première fois la variable data, correspondant à ce qu'on veut insérer dans la table topic */
+                $data = ['titre'=>$titre,'verrouillage'=>'0','categorie_id'=>$id,'user_id'=>'3'];
+                // $topicManager->add($data);
+
+                /* On attribue à la variable $last l'exécution de la fonction add pour insérer un topic */
+                $last = $topicManager->add($data);
+
+                /* On attribue une nouvelle valeur à $data, correspondant à ce qu'on veut insérer dans la table post (on veut insérer $last, car l'éxécution de l'insertion provoque un return sur le dernier id inséré en base de données (La méthode add de Manager renvoie à la méthode insert de DAO, qui retourne lastInsertId)) */
+                $data = ['texte'=>$texte,'sujet_id'=>$last,'user_id'=>'3'];
+                $postManager->add($data);
+
+                
+            }
+            header('Location: index.php?ctrl=forum&action=detailCategorie&id='.$id.'');
+
 
         }
 
