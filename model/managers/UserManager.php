@@ -43,6 +43,34 @@
         
         }
 
+        /*******  RECHERCHER LE MOT DE PASSE ASSOCIE AU MAIL *******/
+        public function findPasswordByMail($mail){
+
+            $sql = "SELECT password
+            FROM ".$this->tableName."
+            WHERE mail = :mail";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['mail' => $mail]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+
+        }
+
+        public function findUserByMail($mail){
+
+            $sql = "SELECT pseudo
+            FROM ".$this->tableName."
+            WHERE mail = :mail";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['mail' => $mail]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+
+        }
 
 
     }
