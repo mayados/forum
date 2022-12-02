@@ -19,7 +19,7 @@
             <header>
                 <nav>
                     <div id="nav-left">
-                        <a href="index.php?ctrl=home&action=index">Accueil</a>
+                        <a href="index.php?ctrl=security&action=index">Accueil</a>
                         <?php
                         if(App\Session::isAdmin()){
                             ?>
@@ -40,8 +40,8 @@
                         }
                         else{
                             ?>
-                            <a href="./view/security/login.html">Connexion</a>
-                            <a href="./view/security/register.html">Inscription</a>
+                            <a href="index.php?ctrl=security&action=directionConnexion">Connexion</a>
+                            <a href="index.php?ctrl=security&action=directionInscription">Inscription</a>
                             <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
                         <?php
                         }
