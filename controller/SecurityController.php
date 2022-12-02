@@ -45,7 +45,8 @@
                 if($pseudo && $mail && $password){
 
                     /* On vérifie que l'utilisateur n'existe pas (mail) */
-                     if($userManager->mails($mail)==0){
+                     if($userManager->mails($mail)==NULL){
+                        var_dump($userManager->mails($mail));
                           var_dump("non enregistré");
                      }else{
                         var_dump("deja enregistre");
