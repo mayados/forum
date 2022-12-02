@@ -31,7 +31,7 @@
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
 
-            $sql = "SELECT titre, dateCreation, id_sujet
+            $sql = "SELECT titre, dateCreation, id_sujet, user_id
             FROM ".$this->tableName."
             WHERE categorie_id = :id
             ORDER BY dateCreation DESC";
@@ -60,7 +60,7 @@
 
                     /* Voir si les simple quotes ne posent pas des soucis au moment de l'ajout dans la bdd */
                     $sql = "INSERT INTO
-                    topic(titre,verrouillage,categorie_id,membre_id)
+                    topic(titre,verrouillage,categorie_id,user_id)
                     VALUES(:titre,'0',:id,'3')";
 
                     DAO::select($sql,['titre' => $titre,'id'=>$id]);
@@ -69,7 +69,7 @@
                     /* Trouver un moyen de mettre le dernier id inséré avec */
 
                     $insertMessage = "INSERT INTO
-                    post(texte,sujet_id,membre_id)
+                    post(texte,sujet_id,user_id)
                     VALUES(:texte,:id,'3')"; 
 
                     DAO::select($insertMessage,['texte' => $texte,'id'=>$id]);

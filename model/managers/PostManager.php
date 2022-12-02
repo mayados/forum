@@ -20,7 +20,7 @@
         /* Méthode pour trouver tous les posts d'un topic */
         public function findPostsByTopic($id){
 
-            $sql = "SELECT texte, dateCreation
+            $sql = "SELECT texte, dateCreation, user_id
             FROM ".$this->tableName."
             WHERE sujet_id = :id
             ORDER BY dateCreation ASC";
