@@ -8,7 +8,7 @@
 
         private $id;
         private $texte;
-        private $membre;
+        private $user;
         private $dateCreation;
 
         /* Prend des tableaux associatifs et les transforme en objets ou tableaux d'objets (exemple : pour accéder à une propriété on va manipuler une méthode de l'objet ex ->get...) */
@@ -57,21 +57,21 @@
         }
 
         /**
-         * Get the value of membre
+         * Get the value of user
          */ 
-        public function getMembre()
+        public function getUser()
         {
-                return $this->membre;
+                return $this->user;
         }
 
         /**
-         * Set the value of membre
+         * Set the value of user
          *
          * @return  self
          */ 
-        public function setMembre($membre)
+        public function setUser($user)
         {
-                $this->membre = $membre;
+                $this->user = $user;
 
                 return $this;
         }
