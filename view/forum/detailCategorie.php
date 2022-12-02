@@ -11,7 +11,7 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
 foreach($topics as $topic ){
 
     ?>
-    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a><?= $topic->getDateCreation() ?><?= $topic->getCategorie() ?></p>
+    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a><?= $topic->getDateCreation() ?> (posté par <?=$topic->getUser()->getPseudo()?>)</p>
 
     <?php
 }
