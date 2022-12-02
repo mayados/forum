@@ -30,6 +30,19 @@
         
         }
 
+        public function pseudos($pseudo){
+            $sql = "SELECT pseudo
+            FROM ".$this->tableName."
+            WHERE pseudo = :pseudo";
+
+            return $this->getOneOrNullResult(
+                DAO::select($sql, ['pseudo' => $pseudo]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+        
+        }
+
 
 
     }
