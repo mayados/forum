@@ -76,48 +76,62 @@
 
         public function login(){
 
-            $userManager = new UserManager();
+
+
+            // $session = new Session();
+            // var_dump($session);
 
             /* On vérifie d'abord que le formulaire voulu a été saisi */
             if(isset($_POST['submit'])){
 
                 /* On filtre les données */
                 $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
-                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+                /* Le mdp en bdd est haché, il ne pourra pas être comparé s'il y a des filtres */
+                $password = $_POST['password'];
+                // var_dump("avant");die;  
 
-                if($mail && $password){
-
-                    /* On recherche le mot de passe associé à l'adresse mail */
-                    $userManager->findPasswordByMail($mail);
-
-                    /* On recherche l'utilisateur rattaché à l'adresse mail */
-                    $userManager->findUserByMail($mail);
-
-                    /* On vérifie que les mots de passe concordent */
-                    if(password_verify($password, $userManager->findPasswordByMail($mail))==TRUE){
-                    /* Si les mots de passe concordent, on stocke l'user en Session (setUser dans App\Session) */      
-                        echo "Bon password";
-                      /* On redirige sur une page d'accueil */                    
-
-                    }else{
-                        echo "pas le bon password";
-                    }
+                if($mail){
+                   if($password){
+                        $userManager = new UserManager();
+                        /* On trouve le password associé au mail */
+                        $getPass = $userManager->findPasswordByMail($mail);
+                        /* On trouve l'utilisateur associé au mail */
+                        $getUser = $userManager->findUserByMail($mail);
                     
+                        // $userManager->findUserByMail($mail);
 
+                        /* S'il y a un utilisateur par rapport au mail entré */
+                        if($getUser){
+                            /* Vérification du password entré avec le password haché en bdd */
+                            $checkPassword = password_verify($password,$getPass['password']);
 
-
-
-
+                            /* Si les passwords correspondent */
+                            if($checkPassword){
+                                var_dump("test");
+                                /* On ajoute l'utilisateur dans la session */
+                                Session::setUser($getUser);
+                                // var_dump($getUser);die;
+                                /* On ajoute un message de succès */
+                                Session::addFlash('success','Bienvenue');
+                                /* On redirige vers la liste des catégories */
+                                // header('Location: index.php?ctrl=forum&action=listCategories');
+                                $this->redirectTo('home');
+                            }
+                        }else
+                                /* S'il n'y a pas d'utilisateur trouvé avec le mail entré  on met un message d'erreur */
+                                Session::addFlash('error','Aucun compte pour cet email');
+                     }else
+                                /* Si le password correspond pas avec celui de la bdd on envoie un message d'erreur */
+                                Session::addFlash('error','Mot de passe incorrect');
+                                header('Location: index.php?ctrl=security&action=directionConnexion');   
+                 
                 }
 
-            }
-
-
-            header('Location: index.php?ctrl=forum&action=listTopics');
-         
+        }
+     
 
         }
 
 
 
- }
+}
