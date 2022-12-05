@@ -35,16 +35,16 @@
                         /* Si l'user n'est pas admin et est en $_SESSION on affiche cette portion */
                         if(App\Session::getUser()){
                             ?>
-                            <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                            <a href="/security/logout.html">Déconnexion</a>
+                            <a href="index.php?ctrl=security&action=viewProfile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
+                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>                            
                             <?php
                         }
                         else{
-                            /* Si ce n'est ni un user ni un admin */
+                            /* En cas de déconnexion*/
                             ?>
                             <a href="index.php?ctrl=security&action=directionConnexion">Connexion</a>
                             <a href="index.php?ctrl=security&action=directionInscription">Inscription</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a>
                         <?php
                         }
                    
