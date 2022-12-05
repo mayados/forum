@@ -23,7 +23,8 @@
             WHERE mail = :mail";
 
             return $this->getOneOrNullResult(
-                DAO::select($sql, ['mail' => $mail]),
+                /* On passe un tableau associatif pour éviter la faille d'injection sql  */
+                DAO::select($sql, ['mail' => $mail], false),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
@@ -50,7 +51,7 @@
             FROM ".$this->tableName."
             WHERE mail = :mail";
 
-            return $this->getOneOrNullResult(
+            return $this->getSingleScalarResult(
                 DAO::select($sql, ['mail' => $mail]),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
@@ -60,12 +61,13 @@
 
         public function findUserByMail($mail){
 
-            $sql = "SELECT pseudo
+            $sql = "SELECT *
             FROM ".$this->tableName."
             WHERE mail = :mail";
 
             return $this->getOneOrNullResult(
-                DAO::select($sql, ['mail' => $mail]),
+                /* Pas oublier de mettre le false ici car sinon ça met null */
+                DAO::select($sql, ['mail' => $mail], false),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
