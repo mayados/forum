@@ -8,13 +8,13 @@
         
         /* fonction de redirection */
         public function redirectTo($ctrl = null, $action = null, $id = null){
-
+            /* Si le $ctrl est différent de "home" */
             if($ctrl != "home"){
                 $url = $ctrl ? "/".$ctrl : "";
                 $url.= $action ? "/".$action : "";
                 $url.= $id ? "/".$id : "";
                 $url.= ".html";
-            }
+            } /* Si le ctrl est "home", on redirige vers le dossier   */
             else $url = "/forum";
             header("Location: $url");
             die();
