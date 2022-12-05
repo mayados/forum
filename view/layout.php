@@ -21,6 +21,7 @@
                     <div id="nav-left">
                         <a href="index.php?ctrl=security&action=index">Accueil</a>
                         <?php
+                        /* Si l'user est admin on affiche cette portion */
                         if(App\Session::isAdmin()){
                             ?>
                             <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
@@ -31,7 +32,7 @@
                     </div>
                     <div id="nav-right">
                     <?php
-                        
+                        /* Si l'user n'est pas admin et est en $_SESSION on affiche cette portion */
                         if(App\Session::getUser()){
                             ?>
                             <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
@@ -39,6 +40,7 @@
                             <?php
                         }
                         else{
+                            /* Si ce n'est ni un user ni un admin */
                             ?>
                             <a href="index.php?ctrl=security&action=directionConnexion">Connexion</a>
                             <a href="index.php?ctrl=security&action=directionInscription">Inscription</a>
