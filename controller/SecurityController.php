@@ -107,7 +107,7 @@
 
                             /* Si les passwords correspondent */
                             if($checkPassword){
-                                var_dump("test");
+                                // var_dump("test");
                                 /* On ajoute l'utilisateur dans la session */
                                 Session::setUser($getUser);
                                 // var_dump($getUser);die;
