@@ -54,7 +54,7 @@
                        /* Si toutes les conditions du dessus sont vérifiées, on hash le mot de pass (le 1er car le 2eme sert uniquement à la comparaison) avec un algo (2eme parametre de la function) */
                         $passwordH = password_hash($password,PASSWORD_BCRYPT);
                         /* C'est le mot de passe haché que l'on stocke en bdd */
-                        $userManager->add(['pseudo'=>$pseudo,'mail'=>$mail,'password'=>$passwordH,'role'=>"role"]);
+                        $userManager->add(['pseudo'=>$pseudo,'mail'=>$mail,'password'=>$passwordH,'role'=>"user"]);
 
                         return [
                             "view" => VIEW_DIR."/security/login.html"
@@ -117,12 +117,10 @@
                                 // header('Location: index.php?ctrl=forum&action=listCategories');
                                 $this->redirectTo('home');
                             }
-                        }else
-                                /* S'il n'y a pas d'utilisateur trouvé avec le mail entré  on met un message d'erreur */
-                                Session::addFlash('error','Aucun compte pour cet email');
-                     }else
+                        }
+                    }else
                                 /* Si le password correspond pas avec celui de la bdd on envoie un message d'erreur */
-                                Session::addFlash('error','Mot de passe incorrect');
+                                Session::addFlash('error','Informations incorrectes');
                                 header('Location: index.php?ctrl=security&action=directionConnexion');   
                  
                 }
@@ -132,6 +130,24 @@
 
         }
 
+        public function viewProfile(){
+
+            $userManager = new UserManager();
+
+            return [
+                "view" => VIEW_DIR . "security/viewProfile.php"
+            ];
+
+        }
+
+        public function deconnexion(){
+            /* On enlève les données contenues dans $_SESSION["user"] */
+            unset($_SESSION['user']);
+            return [
+                "view" => VIEW_DIR . "home.php"
+            ];
+
+        }
 
 
 }
