@@ -109,14 +109,14 @@ use Model\Managers\TopicManager;
                 if($titre && $texte){
 
                     /* On déclare une première fois la variable data, correspondant à ce qu'on veut insérer dans la table topic */
-                    $data = ['titre'=>$titre,'verrouillage'=>'0','categorie_id'=>$id,'user_id'=>'3'];
+                    $data = ['titre'=>$titre,'verrouillage'=>'0','categorie_id'=>$id,'user_id'=>Session::getUser()->getId()];
                     // $topicManager->add($data);
 
                     /* On attribue à la variable $last l'exécution de la fonction add pour insérer un topic */
                     $last = $topicManager->add($data);
 
                     /* On attribue une nouvelle valeur à $data, correspondant à ce qu'on veut insérer dans la table post (on veut insérer $last, car l'éxécution de l'insertion provoque un return sur le dernier id inséré en base de données (La méthode add de Manager renvoie à la méthode insert de DAO, qui retourne lastInsertId)) */
-                    $data = ['texte'=>$texte,'sujet_id'=>$last,'user_id'=>'3'];
+                    $data = ['texte'=>$texte,'sujet_id'=>$last,'user_id'=>Session::getUser()->getId()];
                     $postManager->add($data);
 
                 }
