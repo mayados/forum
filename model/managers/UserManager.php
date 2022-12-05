@@ -37,7 +37,8 @@
             WHERE pseudo = :pseudo";
 
             return $this->getOneOrNullResult(
-                DAO::select($sql, ['pseudo' => $pseudo]),
+                /* Pas oublier de mettre le false ici car sinon ça fait une erreur, car on doit traiter tous les cas */
+                DAO::select($sql, ['pseudo' => $pseudo], false),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
@@ -66,7 +67,7 @@
             WHERE mail = :mail";
 
             return $this->getOneOrNullResult(
-                /* Pas oublier de mettre le false ici car sinon ça met null */
+                /* Pas oublier de mettre le false ici car sinon ça fait une erreur, car on doit traiter tous les cas */
                 DAO::select($sql, ['mail' => $mail], false),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
