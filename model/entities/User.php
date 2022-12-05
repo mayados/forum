@@ -129,8 +129,9 @@
         }
 
         public function hasRole($role){
-                if($this->role = $role){
-                        return $this->role;
+                // var_dump($role);die;
+                if($this->role === $role){
+                        return true;
                 }else{
                         return false;
                 }
