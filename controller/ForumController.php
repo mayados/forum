@@ -130,4 +130,22 @@ use Model\Managers\TopicManager;
 
         }
 
+        /* Quand un utilisateur connecté saisi un message */
+        public function nouveauPost(){
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+            $postManager = new PostManager();
+
+            if(isset($_POST['submit'])){
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                if($texte){
+                    /* On attribue une nouvelle valeur à $data, correspondant à ce qu'on veut insérer dans la table post (on veut insérer $last, car l'éxécution de l'insertion provoque un return sur le dernier id inséré en base de données (La méthode add de Manager renvoie à la méthode insert de DAO, qui retourne lastInsertId)) */
+                    $data = ['texte'=>$texte,'sujet_id'=>$id,'user_id'=>Session::getUser()->getId()];
+                    $postManager->add($data);
+                }
+            }
+            header('Location: index.php?ctrl=forum&action=detailTopic&id='.$id.'');
+        }
+
     }
