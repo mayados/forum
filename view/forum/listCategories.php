@@ -14,9 +14,9 @@ $categories = $result["data"]['categories'];
     foreach($categories as $categorie ){
         /* On fait appelle à la méthode getNomCategorie de l'entité Categorie */
         ?>
-        <div class="categorie-item">
-            <a href="index.php?ctrl=forum&action=detailCategorie&id=<?= $categorie->getId()?>"><?=$categorie->getNomCategorie()?></a>
-        </div>
+        <a href="index.php?ctrl=forum&action=detailCategorie&id=<?= $categorie->getId()?> "class="categorie-item">
+            <p ><?=$categorie->getNomCategorie()?></p>
+        </a>
         <?php
     }
     ?>
