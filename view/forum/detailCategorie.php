@@ -25,10 +25,10 @@ foreach($topics as $topic ){
 <form action="index.php?ctrl=forum&action=nouveauTopic&id=<?= $idCategorie ?>" method="post">
 
     <label for="titre">Titre du topic :</label>
-    <input type="text" id="titre" name="titre">
+    <input type="text" id="titre" name="titre" maxlength="80" required>
 
     <label for="texte">Message</label>
-    <textarea name="texte" id="texte" cols="30" rows="10"></textarea>
+    <textarea name="texte" id="texte" cols="30" rows="10" required></textarea>
 
     <input name="submit" type="submit" value="Envoyer">
 
