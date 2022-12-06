@@ -1,0 +1,6 @@
+- Revoir le thème des pages + faire css de login et register
+- Afficher correctement les messages d'erreur (lors du login et du register)
+- Verrouillage des sujets (admin : peut clore tous les sujets)(utilisateur peut clore les sujets qu'il a créé (ex, quand il estime qu'il a eu sa réponse))
+( FAIT )- Donner à l'utilisateur (seulement s'il est connecté) la possibilité d'écrire un message 
+- bannir utilisateurs etc (admin)
+- Afficher le profil d'un utilisateur quand on clique sur son pseudo (user et admin)
