@@ -6,30 +6,44 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
     
 ?>
 
-<h1>liste des topics</h1>
+<div id="main-detailcategorie">
+    <div id="list-topics">
+        <h1>Liste des topics</h1>
+        <?php
+        foreach($topics as $topic ){
 
-<?php
-foreach($topics as $topic ){
+            ?>
+            <a class="topic" href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>">
+                <p><?=$topic->getTitre()?></p>
+                <p>(posté par <?=$topic->getUser()->getPseudo()?>)</p>                
+                <p><?= $topic->getDateCreation() ?> </p> 
+            </a> 
+            <?php
+        }
+        ?>    
+    </div>
+    <div id="ajout-topic">
+        <h4>Ajouter un nouveau topic :</h4>
 
-    ?>
-    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a><?= $topic->getDateCreation() ?> (posté par <?=$topic->getUser()->getPseudo()?></p>
 
-    <?php
-}
+        <form id="form-topic" action="index.php?ctrl=forum&action=nouveauTopic&id=<?= $idCategorie ?>" method="post">
 
-?>
+            <div class="form-field">
+                <label for="titre">Titre du topic :</label>
+                <input type="text" id="titre" name="titre" maxlength="80" required>                
+            </div>
+            <div class="form-field">
+                <label for="texte">Message</label>
+                <textarea name="texte" id="texte" cols="30" rows="10" required></textarea>                
+            </div>
 
-<h4>Ajouter un nouveau topic :</h4>
+            <div class="form-field">
+                 <input class="form-button" name="submit" type="submit" value="Envoyer">                
+            </div>
+        </form>             
+    </div>
+</div>
 
 
-<form action="index.php?ctrl=forum&action=nouveauTopic&id=<?= $idCategorie ?>" method="post">
 
-    <label for="titre">Titre du topic :</label>
-    <input type="text" id="titre" name="titre" maxlength="80" required>
 
-    <label for="texte">Message</label>
-    <textarea name="texte" id="texte" cols="30" rows="10" required></textarea>
-
-    <input name="submit" type="submit" value="Envoyer">
-
-</form>
