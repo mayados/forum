@@ -16,7 +16,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
             ?>
             <div class="post-topic">
                 <p><?=$post->getTexte()?> </p>
-                <p class="infos-post">Posté par <?=$post->getUser()->getPseudo() ?> le <?= $post->getDateCreation() ?></p>
+                <p class="infos-post">Posté par <a href="index.php?ctrl=security&action=viewProfileUsers&id=<?= $post->getUser()->getId() ?>"><?=$post->getUser()->getPseudo() ?></a> le <?= $post->getDateCreation() ?></p>
             </div>
             <?php
         }    
