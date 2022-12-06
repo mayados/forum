@@ -13,7 +13,7 @@ a{
 
                                 /*PAGE*/
 #wrapper{
-    background-color: #f9c621;
+    background-color: #A95C68;
     min-height: 94vh;
     color: white;
 }
@@ -130,6 +130,8 @@ footer{
 
                                 /*DETAIL CATEGORIE PAGE*/
 
+/* Refaire les couleurs (nav + main) */
+
 #main-detailcategorie{
     min-height: 87vh;
     width: 100%;
@@ -216,4 +218,62 @@ footer{
     height: 30px;
     width: 100px;
     text-align: center;
+}
+
+
+
+                                    /*DETAILTOPIC PAGE*/
+
+#main-listposts{
+    min-height: 87vh;
+    width: 100%;
+    background-color: rgb(116, 14, 14); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-listposts h1{
+    padding: 20px 0px 20px 0px;
+}
+
+#main-listposts #posts{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    min-height: 20vh;
+}
+
+#main-listposts .post-topic{
+    border: 1px solid yellow;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 3px;
+}
+
+#main-listposts .post-topic .infos-post{
+    color: gray;
+}
+
+#main-listposts #ajout-post{
+    border: 1px solid yellow;
+}
+
+#main-listposts #ajout-post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#main-listposts #ajout-post .form-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
