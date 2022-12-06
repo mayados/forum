@@ -144,6 +144,25 @@
 
         }
 
+        public function viewProfileUsers($id){
+
+            // $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $userManager = new UserManager();
+            $topicManager = new TopicManager();
+
+            return [
+                "view" => VIEW_DIR . "security/usersProfile.php",
+                "data" => [
+                    "users" => $userManager->findOneById($id),
+                    "topics"=>$topicManager->findTopicsByUser($id)
+                    ]
+            ];
+
+
+
+        }
+
         public function deconnexion(){
             /* On enlève les données contenues dans $_SESSION["user"] */
             unset($_SESSION['user']);
@@ -152,6 +171,8 @@
             ];
 
         }
+
+
 
 
 }
