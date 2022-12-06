@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+                                /*GENERAL*/
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+                                /*PAGE*/
+#wrapper{
+    background-color: gray;
+    min-height: 94vh;
+}
+
+#mainpage{
+    background-color: beige;
+    min-height: 94vh;
+}
+
+                                /*MENU DE NAVIGATION*/
+
+nav{
+    /*Penser à changer le background pour une couleur vermeille*/
+    background-color: #5FE8C5;
+    border-bottom: 2px solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 7vh;
+    padding: 0px 20px 0px 20px;
+}
+
+#nav-right{
+    display: flex;
+    gap: 15px;
+}
+
+
+                                /*FOOTER*/
+footer{
+    height: 6vh;
+    background-color: #BACFCA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+                                /*PAGE HOME*/
+
+#main-home{
+    background-color: rgb(196, 221, 243);
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0px 50px 0px 50px;
+}
+
+#main-home p, h1{
+    text-align: center;
+    text-align: justify;
+}
+
+.bottom-links{
+    display: flex;
+    gap: 10px;
+}
+
+
+                                /*LIST CATEGORIES PAGE*/
+
+#main-listcategories{
+    background-color: rgb(196, 221, 243);
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+#main-listcategories h1{
+    padding-top: 50px;
+}
+
+#main-listcategories .categories{
+    border: 1px solid red;
+    width: 80%;
+    min-height: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#main-listcategories .categorie-item{
+    border: 1px solid orange;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
