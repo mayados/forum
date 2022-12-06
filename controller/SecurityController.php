@@ -132,10 +132,14 @@
 
         public function viewProfile(){
 
-            $userManager = new UserManager();
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+            $topicManager = new TopicManager();
 
             return [
-                "view" => VIEW_DIR . "security/viewProfile.php"
+                "view" => VIEW_DIR . "security/viewProfile.php",
+                "data" => [
+                    "topics" => $topicManager->findTopicsByUser($id)
+                    ]
             ];
 
         }
