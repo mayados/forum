@@ -103,7 +103,7 @@
             return $formattedDate;
         }
 
-        public function setDateInsciption($date){
+        public function setDateInscription($date){
             $this->dateInscription = new \DateTime($date);
             return $this;
         }
