@@ -36,7 +36,7 @@
                         /* Si l'user n'est pas admin et est en $_SESSION on affiche cette portion */
                         if(App\Session::getUser()){
                             ?>
-                            <a href="index.php?ctrl=security&action=viewProfile"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                            <a href="index.php?ctrl=security&action=viewProfile&id=<?=$_SESSION["user"]->getId() ?>"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
                             <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
                             <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a> 
                             <a href="index.php?ctrl=forum&action=listCategories">la liste des Categories</a>                             
