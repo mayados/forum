@@ -20,11 +20,11 @@
             }        
    
         public function users(){
-            $this->restrictTo("ROLE_USER");
+
+            $this->restrictTo("admin");
 
             $manager = new UserManager();
             $users = $manager->findAll(['dateInscription', 'DESC']);
-
             return [
                 "view" => VIEW_DIR."security/users.php",
                 "data" => [
