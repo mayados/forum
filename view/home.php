@@ -19,9 +19,9 @@
         }else{
             /* S'il n'y a pas d'utilisateur en SESSION, on propose de se connecter ou s'inscrire */
             ?>
-            <a href="view/security/login.html">Se connecter</a>
+            <a href="index.php?ctrl=security&action=directionConnexion">Se connecter</a>
             <span>&nbsp;-&nbsp;</span>
-            <a href="view/security/register.html">S'inscrire</a>       
+            <a href="index.php?ctrl=security&action=directionInscription">S'inscrire</a>       
         <?php
         }
     ?>    
