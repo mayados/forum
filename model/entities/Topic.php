@@ -90,7 +90,7 @@
         }
 
         /**
-         * Get the value of closed
+         * Get the value of verrouillage
          */ 
         public function getVerrouillage()
         {
@@ -98,7 +98,7 @@
         }
 
         /**
-         * Set the value of closed
+         * Set the value of verrouillage
          *
          * @return  self
          */ 
@@ -110,7 +110,7 @@
         }
 
                 /**
-         * Get the value of closed
+         * Get the value of categorie
          */ 
         public function getCategorie()
         {
@@ -118,7 +118,7 @@
         }
 
         /**
-         * Set the value of closed
+         * Set the value of categorie
          *
          * @return  self
          */ 
