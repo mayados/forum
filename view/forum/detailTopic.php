@@ -4,8 +4,6 @@ $posts = $result["data"]['posts'];
 
 $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
 
-// var_dump($posts);
-    
 ?>
 
 <div id="main-listposts">
@@ -31,12 +29,13 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
                 </p>
             </div>
             <?php
+            
         }    
         ?>        
     </div>
 
     <?php
-    if(App\Session::getUser() && $post->getTopic()->getVerrouillage()==0){
+    if(App\Session::getUser() && $post->getTopic()->getVerrouillage()==0 ){
     ?>
     <div id="ajout-post">
         <h4>Ecrire un message :</h4>
