@@ -8,7 +8,6 @@ $topics = $result["data"]['topics'];
 
 <?php
 foreach($topics as $topic ){
-
     ?>
     <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a> (sujet de : 
         <?php
@@ -21,6 +20,17 @@ foreach($topics as $topic ){
         <a href="index.php?ctrl=security&action=viewProfileUsers&id=<?= $topic->getUser()->getId() ?>"><?=$topic->getUser()->getPseudo()?></a>)
         <?php
             }
+        if(App\Session::isAdmin()){
+            if($topic->getVerrouillage()==NULL){
+                ?>
+                    <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore</a>
+                <?php
+            }else{
+                ?>
+                    <p>Sujet clos</p>
+                <?php
+            }
+        }
         ?>
     </p>
     <?php
