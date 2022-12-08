@@ -1,6 +1,12 @@
 - Revoir le thème des pages + faire css de login et register + css des messages (erreur, succès)
 - Afficher correctement les messages d'erreur (lors du login et du register)
 - Verrouillage des sujets (admin : peut clore tous les sujets)(utilisateur peut clore les sujets qu'il a créé (ex, quand il estime qu'il a eu sa réponse))
+- Se servir de la fonction redirectTo pour faire des redirections plus simples
+
+
+
+(FAIT) Donner à l'admin la possibilité de créer une catégorie
+(FAIT) Ajouter message "pas de topics pour le moment" quand la catégorie est vide
 (FAIT) bannir utilisateurs (admin) et ajouter Utilisateur banni ou autre comme nom d'utilisateur aux sujets/posts
 ( FAIT )- Donner à l'utilisateur (seulement s'il est connecté) la possibilité d'écrire un message 
 (FAIT)- Afficher le profil d'un utilisateur quand on clique sur son pseudo (user et admin)
