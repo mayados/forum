@@ -10,10 +10,9 @@
         public function redirectTo($ctrl = null, $action = null, $id = null){
             /* Si le $ctrl est différent de "home" */
             if($ctrl != "home"){
-                $url = $ctrl ? "/".$ctrl : "";
-                $url.= $action ? "/".$action : "";
-                $url.= $id ? "/".$id : "";
-                $url.= ".html";
+                $url = $ctrl ? "?ctrl=" . $ctrl : "";
+                $url.= $action ? "&action=" . $action : "";
+                $url.= $id ? "&id=" . $id : "";
             } /* Si le ctrl est "home", on redirige vers le dossier   */
             else $url = "/forum";
             header("Location: $url");
