@@ -13,7 +13,17 @@ $topics = $result["data"]['topics'];
 <?php 
     foreach($topics as $topic){
     ?>
-    <p><?=  $topic->getTitre()?></p>
+    <p><?=  $topic->getTitre()?>
+        <?php
+            if($topic->getVerrouillage()==0){
+        ?>
+                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet</a>
+        <?php
+            }else{
+        ?>
+        Sujet clos
+        <?php } ?>
+    </p>
     <?php
     }
 ?>
