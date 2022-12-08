@@ -172,6 +172,20 @@
 
         }
 
+        public function ban(){
+
+            $this->restrictTo("admin");
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $userManager = new UserManager();
+
+            $userManager->delete($id);
+
+            header('Location: index.php?ctrl=forum&action=listCategories');   
+
+        }
+
 
 
 
