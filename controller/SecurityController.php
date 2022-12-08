@@ -62,7 +62,7 @@
                         ];  
 
                      }else{
-                        Session::addFlash('success',"Les informations n'ont pas été saisies correctement ou le mail ou pseudo est déjà pris");
+                        Session::addFlash('error',"Les informations n'ont pas été saisies correctement ou le mail ou pseudo est déjà pris");
                         $this->redirectTo("security","directionInscription");
                      }
                  }
