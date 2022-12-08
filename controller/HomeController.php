@@ -33,6 +33,17 @@
             ];
         }
 
+        public function newCategorie(){
+
+            $this->restrictTo("admin");
+
+            $manager = new UserManager();
+            $users = $manager->findAll(['dateInscription', 'DESC']);
+            return [
+                "view" => VIEW_DIR."security/newCategorie.html",
+            ]; 
+        }
+
         public function forumRules(){
             
             return [
