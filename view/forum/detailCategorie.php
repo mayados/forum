@@ -15,7 +15,19 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
             ?>
             <a class="topic" href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>">
                 <p><?=$topic->getTitre()?></p>
-                <p>(posté par <?=$topic->getUser()->getPseudo()?>)</p>                
+                <p>(posté par 
+                    <?php
+                        if($topic->getUser()==false){
+                            ?>
+                            Utilisateur banni
+                            <?php
+                        }else{
+                        ?>
+                        <?=$topic->getUser()?>)
+                        <?php
+                        }
+                        ?>
+                </p>  
                 <p><?= $topic->getDateCreation() ?> </p> 
             </a> 
             <?php
