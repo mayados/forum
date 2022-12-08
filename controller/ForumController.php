@@ -35,9 +35,10 @@ use Model\Managers\TopicManager;
                     "categories" => $categorieManager->findAll(["nomCategorie","ASC"])
                 ]
             ];
-
         }
 
+
+        
         /* On crée une fonction qui permet de lister tous les topics = sujets */
         public function listTopics(){
             $topicManager = new TopicManager();
@@ -56,18 +57,17 @@ use Model\Managers\TopicManager;
 
         /* Fonction pour afficher les topics présents dans une catégorie */
         public function detailCategorie(){
-        /* On doit récupérer l'id envoyé dans le lien */
-        $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+            /* On doit récupérer l'id envoyé dans le lien */
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
-        $topicManager = new TopicManager();
+            $topicManager = new TopicManager();
 
-        return [
-            "view" => VIEW_DIR . "forum/detailCategorie.php",
-            "data" => [
-                "topics" => $topicManager->findTopicsByCategorie($id)
-            ]
-        ];
-
+            return [
+                "view" => VIEW_DIR . "forum/detailCategorie.php",
+                "data" => [
+                    "topics" => $topicManager->findTopicsByCategorie($id)
+                ]
+            ];
         }
 
 
@@ -83,11 +83,11 @@ use Model\Managers\TopicManager;
                 "posts" => $postManager->findPostsByTopic($id)
                 ]
             ];
-
         }
 
-        /* Fonction pour créer un nouveau topic et un premier message sur ce dernier */
 
+
+        /* Fonction pour créer un nouveau topic et un premier message sur ce dernier */
         public function nouveauTopic(){
 
             $id = (isset($_GET["id"])) ? $_GET["id"] : null;
@@ -120,12 +120,12 @@ use Model\Managers\TopicManager;
                     $postManager->add($data);
 
                 }
-                
             }
-            header('Location: index.php?ctrl=forum&action=detailCategorie&id='.$id.'');
 
-
+            $this->redirectTo("forum","detailTopic", $last);
         }
+
+
 
         /* Quand un utilisateur connecté saisi un message */
         public function nouveauPost(){
@@ -142,7 +142,6 @@ use Model\Managers\TopicManager;
                     $postManager->add($data);
                 }
             }
-            header('Location: index.php?ctrl=forum&action=detailTopic&id='.$id.'');
+            $this->redirectTo("forum","detailTopic", $id);
         }
-
     }
