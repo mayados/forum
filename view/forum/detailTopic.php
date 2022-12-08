@@ -36,7 +36,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
     </div>
 
     <?php
-    if(App\Session::getUser()){
+    if(App\Session::getUser() && $post->getTopic()->getVerrouillage()==0){
     ?>
     <div id="ajout-post">
         <h4>Ecrire un message :</h4>
@@ -52,6 +52,10 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
         </form>             
     </div>
     <?php
+    }else{
+        ?>
+            <p>Ce sujet est clos</p>
+        <?php
     }
     ?>
 </div>
