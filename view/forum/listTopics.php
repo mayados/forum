@@ -10,7 +10,7 @@ $topics = $result["data"]['topics'];
 foreach($topics as $topic ){
 
     ?>
-    <p><?=$topic->getTitre()?> (sujet de : 
+    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a> (sujet de : 
         <?php
             if($topic->getUser()==false){
             ?>
