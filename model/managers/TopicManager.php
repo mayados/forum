@@ -47,7 +47,7 @@
 
         public function findTopicsByUser($id){
 
-            $sql = "SELECT titre, user_id
+            $sql = "SELECT titre,id_topic, user_id, verrouillage, dateCreation
             FROM ".$this->tableName."
             WHERE user_id = :id
             ORDER BY dateCreation DESC";
