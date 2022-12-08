@@ -14,7 +14,7 @@ foreach($users as $user ){
     /* On fait appelle à la méthode getNomCategorie de l'entité Categorie */
     ?>
     <div>
-        <p><?=$user->getPseudo()?><a href="#">Bannir</a></p>
+        <p><?=$user->getPseudo()?><a href="index.php?ctrl=security&action=ban&id=<?= $user->getId() ?>">Bannir</a></p>
     </div>
 
     <?php
