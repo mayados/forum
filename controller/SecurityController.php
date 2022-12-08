@@ -8,6 +8,7 @@
     use Model\Managers\UserManager;
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
+    use Model\Managers\CategorieManager;
     
     class SecurityController extends AbstractController implements ControllerInterface{
 
@@ -75,9 +76,6 @@
                              /******* CONNEXION *********/
 
         public function login(){
-
-
-
             // $session = new Session();
             // var_dump($session);
 
@@ -186,7 +184,41 @@
 
         }
 
+        /* Fonction pour créer une nouvelle catégorie en tant qu'admin */
+        public function nouvelleCategorie(){
+            $this->restrictTo("admin");
+
+            if(isset($_POST['submit'])){
+
+                $nomCategorie = filter_input(INPUT_POST, "nomCategorie", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                if($nomCategorie){
+
+                     $categorieManager = new CategorieManager();
+
+                    /* On déclare une première fois la variable data, correspondant à ce qu'on veut insérer dans la table topic */
+                    $data = ['nomCategorie'=>$nomCategorie];
+
+                     $categorieManager->add($data);
+                }
+            }
+
+            header('Location: index.php?ctrl=forum&action=listCategories');   
+        }
 
 
+        public function closeTopic(){
+            /* On ne restreint pas cette fonction, car l'utilisateur en session peut également clore ses sujets */
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $topicManager = new TopicManager();
+
+            /* On fait passer l'id du topic concerné */
+            $topicManager->closeTopic($id);
+
+            $this->redirectTo('home');
+
+        }
 
 }
