@@ -9,14 +9,26 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
 ?>
 
 <div id="main-listposts">
-    <h1>liste des posts</h1>
+    <h1>liste des posts du sujet</h1>
     <div id="posts">
         <?php
         foreach($posts as $post ){
             ?>
             <div class="post-topic">
                 <p><?=$post->getTexte()?> </p>
-                <p class="infos-post">Posté par <a href="index.php?ctrl=security&action=viewProfileUsers&id=<?= $post->getUser()->getId() ?>"><?=$post->getUser()->getPseudo() ?></a> le <?= $post->getDateCreation() ?></p>
+                <p class="infos-post">Posté par 
+                    <?php
+                        if($post->getUser()==false){
+                            ?>
+                            Utilisateur banni le <?= $post->getDateCreation() ?>
+                            <?php
+                        }else{
+                        ?>
+                            <a href="index.php?ctrl=security&action=viewProfileUsers&id=<?= $post->getUser()->getId() ?>"><?=$post->getUser()->getPseudo() ?></a> le <?= $post->getDateCreation() ?>
+                        <?php
+                        }
+                        ?>
+                </p>
             </div>
             <?php
         }    
