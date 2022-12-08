@@ -58,6 +58,20 @@
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
+        }
+
+        /* Clore un sujet */
+        public function closeTopic($id){
+
+            $sql = "UPDATE ".$this->tableName."
+            SET verrouillage = 1
+            WHERE id_sujet = :id";
+
+            return $this->getSingleScalarResult(
+                DAO::select($sql, ['id' => $id]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
 
         }
         
