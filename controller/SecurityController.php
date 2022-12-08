@@ -62,10 +62,8 @@
                         ];  
 
                      }else{
-                        echo "Les informations n'ont pas été saisies correctement ou le mail ou pseudo est déjà pris";
-                        return [
-                            "view" => VIEW_DIR."/security/listCategories.php"
-                        ];  
+                        Session::addFlash('success',"Les informations n'ont pas été saisies correctement ou le mail ou pseudo est déjà pris");
+                        $this->redirectTo("security","directionInscription");
                      }
                  }
 
@@ -114,18 +112,16 @@
                                 /* On redirige vers la liste des catégories */
                                 // header('Location: index.php?ctrl=forum&action=listCategories');
                                 $this->redirectTo('home');
+                            }else{
+                                 /* Si le password correspond pas avec celui de la bdd on envoie un message d'erreur */
+                                 Session::addFlash('error','Informations incorrectes');
+                                $this->redirectTo("security","directionConnexion");     
                             }
                         }
                     }else
-                                /* Si le password correspond pas avec celui de la bdd on envoie un message d'erreur */
-                                Session::addFlash('error','Informations incorrectes');
-                                header('Location: index.php?ctrl=security&action=directionConnexion');   
-                 
+                                $this->redirectTo("security","directionConnexion");   
                 }
-
         }
-     
-
         }
 
         public function viewProfile(){
@@ -164,6 +160,8 @@
         public function deconnexion(){
             /* On enlève les données contenues dans $_SESSION["user"] */
             unset($_SESSION['user']);
+            Session::addFlash('success','Déconnecté avec succés');
+
             return [
                 "view" => VIEW_DIR . "home.php"
             ];
@@ -180,7 +178,9 @@
 
             $userManager->delete($id);
 
-            header('Location: index.php?ctrl=forum&action=listCategories');   
+            Session::addFlash('success','Utilisateur banni');
+
+            $this->redirectTo("security","users");   
 
         }
 
@@ -202,8 +202,7 @@
                      $categorieManager->add($data);
                 }
             }
-
-            header('Location: index.php?ctrl=forum&action=listCategories');   
+            $this->redirectTo("forum","listCategories");   
         }
 
 
@@ -217,8 +216,8 @@
             /* On fait passer l'id du topic concerné */
             $topicManager->closeTopic($id);
 
-            $this->redirectTo('home');
+            Session::addFlash('success','Sujet clos avec succès');
+            $this->redirectTo("forum","detailTopic", $id);
 
         }
-
 }
