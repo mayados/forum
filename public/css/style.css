@@ -12,10 +12,21 @@ a{
 
 
                                 /*PAGE*/
+                            
 #wrapper{
     background-color: #A95C68;
     min-height: 94vh;
     color: white;
+    position: relative;
+}
+
+.message{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    text-align: center;
 }
 
 #mainpage{
