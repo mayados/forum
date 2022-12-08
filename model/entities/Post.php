@@ -8,6 +8,7 @@
 
         private $id;
         private $texte;
+        private $topic;
         private $user;
         private $dateCreation;
 
@@ -52,6 +53,26 @@
         public function setTexte($texte)
         {
                 $this->texte = $texte;
+
+                return $this;
+        }
+
+                /**
+         * Get the value of texte
+         */ 
+        public function getTopic()
+        {
+                return $this->topic;
+        }
+
+        /**
+         * Set the value of topic
+         *
+         * @return  self
+         */ 
+        public function setTopic($topic)
+        {
+                $this->topic = $topic;
 
                 return $this;
         }
