@@ -28,4 +28,6 @@
             <p>Pas de topics créés</p>
         <?php
     }
+
 ?>
+<a href="index.php?ctrl=security&action=ban&id=<?= $user->getId() ?>">Bannir</a>
