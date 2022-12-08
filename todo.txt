@@ -1,7 +1,8 @@
 - Revoir le thème des pages + faire css de login et register + css des messages (erreur, succès)
-- Afficher correctement les messages d'erreur (lors du login et du register)
-- Se servir de la fonction redirectTo pour faire des redirections plus simples
 
+
+(FAIT) Afficher correctement les messages d'erreur (lors du login et du register)
+(FAIT)- Se servir de la fonction redirectTo pour faire des redirections plus simples 
 (FAIT) - Verrouillage des sujets utilisateur peut clore les sujets qu'il a créé 
 (FAIT) Verrouillage des sujets admin : peut clore tous les sujets
 (FAIT) Donner à l'admin la possibilité de créer une catégorie
