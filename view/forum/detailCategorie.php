@@ -13,7 +13,7 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
         <h1>Liste des topics</h1>
         <?php
         foreach($topics as $topic ){
-
+            var_dump($topic->getVerrouillage());
             ?>
             <a class="topic" href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>">
                 <p><?=$topic->getTitre()?></p>
@@ -21,7 +21,7 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
                     <?php
                         if($topic->getUser()==false){
                             ?>
-                            Utilisateur banni
+                            Utilisateur banni)
                             <?php
                         }else{
                         ?>
@@ -33,9 +33,9 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
                 <p><?= $topic->getDateCreation() ?> </p> 
                 <?php
                     if(App\Session::isAdmin()){
-                        if($topic->getVerrouillage()==0){
+                        if($topic->getVerrouillage()==NULL){
                 ?>
-                    <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>&categorie=<?= $idCategorie ?>">Clore</a>
+                            <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>&categorie=<?= $idCategorie ?>">Clore</a>
                 <?php
                         }else{
                         ?>
