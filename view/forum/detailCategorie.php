@@ -2,9 +2,10 @@
 
 $topics = $result["data"]['topics'];
 
-if(!$topics==null){
 /* On peut récupérer l'id de la catégorie grâce à l'id placé dans le lien de la  page listCategories.php */
 $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
+if(!$topics==null){
+
     
 ?>
 
@@ -13,7 +14,6 @@ $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
         <h1>Liste des topics</h1>
         <?php
         foreach($topics as $topic ){
-            var_dump($topic->getVerrouillage());
             ?>
             <a class="topic" href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>">
                 <p><?=$topic->getTitre()?></p>
