@@ -120,9 +120,6 @@ use Model\Managers\TopicManager;
                     $postManager->add($data);
 
                 }
-
-
-
                 
             }
             header('Location: index.php?ctrl=forum&action=detailCategorie&id='.$id.'');
