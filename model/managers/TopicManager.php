@@ -31,7 +31,7 @@
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
 
-            $sql = "SELECT titre, dateCreation, id_sujet, user_id
+            $sql = "SELECT titre, dateCreation, id_topic, user_id, verrouillage
             FROM ".$this->tableName."
             WHERE categorie_id = :id
             ORDER BY dateCreation DESC";
@@ -65,7 +65,7 @@
 
             $sql = "UPDATE ".$this->tableName."
             SET verrouillage = 1
-            WHERE id_sujet = :id";
+            WHERE id_topic = :id";
 
             return $this->getSingleScalarResult(
                 DAO::select($sql, ['id' => $id]),
