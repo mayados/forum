@@ -76,11 +76,13 @@ use Model\Managers\TopicManager;
             $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
             $postManager = new PostManager();
+            $topicManager = new TopicManager();
 
             return [
                 "view" => VIEW_DIR . "forum/detailTopic.php",
                 "data" => [
-                "posts" => $postManager->findPostsByTopic($id)
+                "posts" => $postManager->findPostsByTopic($id),
+                "topics" => $topicManager->findOneById($id)
                 ]
             ];
         }
