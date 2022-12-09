@@ -1,13 +1,14 @@
 <?php
 
 $posts = $result["data"]['posts'];
+$topic = $result["data"]['topics'];
 
 $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 ?>
 
 <div id="main-listposts">
-    <h1>liste des posts du sujet</h1>
+    <h1>Sujet : <?= $topic->getTitre() ?></h1>
     <div id="posts">
         <?php
         foreach($posts as $post ){
