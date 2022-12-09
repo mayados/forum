@@ -128,11 +128,14 @@
 
             $id = (isset($_GET["id"])) ? $_GET["id"] : null;
             $topicManager = new TopicManager();
+            $postManager = new PostManager();
 
             return [
                 "view" => VIEW_DIR . "security/viewProfile.php",
                 "data" => [
-                    "topics" => $topicManager->findTopicsByUser($id)
+                    "topics" => $topicManager->findTopicsByUser($id),
+                    "lastTopics" => $topicManager->findLastTopics($id),
+                    "lastPosts" =>  $postManager->findLastPosts($id)
                     ]
             ];
 
@@ -144,12 +147,14 @@
 
             $userManager = new UserManager();
             $topicManager = new TopicManager();
+            $postManager = new PostManager();
 
             return [
                 "view" => VIEW_DIR . "security/usersProfile.php",
                 "data" => [
                     "users" => $userManager->findOneById($id),
-                    "topics"=>$topicManager->findTopicsByUser($id)
+                    "topics"=>$topicManager->findTopicsByUser($id),
+                    "lastPosts" =>  $postManager->findLastPosts($id)
                     ]
             ];
 
