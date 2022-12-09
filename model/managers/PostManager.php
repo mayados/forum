@@ -32,4 +32,22 @@
 
         }
 
+
+        public function findLastPosts($id){
+
+            $sql = "SELECT *
+            FROM ".$this->tableName."
+            WHERE user_id = :id
+            ORDER BY dateCreation DESC
+            LIMIT 5";
+
+            /* Plusieurs objets sont attendus car il y a plusieurs topics */
+            return $this->getMultipleResults(
+                DAO::select($sql, ['id' => $id]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+
+        }
+
     }
