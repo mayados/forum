@@ -2,6 +2,8 @@
 /* S'il y a des datas... */
 $topics = $result["data"]['topics'];
 
+// var_dump($activitesReverse);
+// var_dump(array_count_values($activitesReverse));
 // var_dump($_SESSION['activites']);
 ?>
 <h4>Mon profil</h4>
@@ -14,12 +16,21 @@ $topics = $result["data"]['topics'];
     <?php
         // Si des activités ont été enregistrées en $_SESSION...
         if(isset($_SESSION['activites'])){
-            foreach($_SESSION['activites'] as $activite){
-                // var_dump($activite);
-                ?>
-                    <li><?= $activite ?></li>
-                <?php
-            }
+
+            $activitesReverse = array_reverse($_SESSION['activites']);
+            /* TROUVER UN MOYEN D AFFICHER LES 5 DERNIERES ACTIVITES */
+                // $compteur = 1;
+                // while($compteur <= 3){
+                    foreach( $activitesReverse as $activite){
+
+                        // var_dump($activite);
+                        ?>
+                            <li><?=($activite) ?></li>
+                        <?php
+                        // $compteur++;
+                    }
+                // }
+                
         }else{
             ?>
                 <p>Pas d'activité enregistrée</p>
