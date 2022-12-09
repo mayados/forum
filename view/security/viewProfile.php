@@ -1,6 +1,8 @@
 <?php 
 /* S'il y a des datas... */
 $topics = $result["data"]['topics'];
+$lastTopics = $result["data"]['lastTopics'];
+$lastPosts = $result["data"]['lastPosts'];
 
 // var_dump($activitesReverse);
 // var_dump(array_count_values($activitesReverse));
@@ -11,31 +13,21 @@ $topics = $result["data"]['topics'];
 <p>Pseudo : <?= $_SESSION["user"]->getPseudo() ?></p>
 
 <p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>
+
 <br>
-<ul>Mes dernières activités :
+<ul>Mes derniers posts :
     <?php
-        // Si des activités ont été enregistrées en $_SESSION...
-        if(isset($_SESSION['activites'])){
-
-            $activitesReverse = array_reverse($_SESSION['activites']);
-            /* TROUVER UN MOYEN D AFFICHER LES 5 DERNIERES ACTIVITES */
-                // $compteur = 1;
-                // while($compteur <= 3){
-                    foreach( $activitesReverse as $activite){
-
-                        // var_dump($activite);
-                        ?>
-                            <li><?=($activite) ?></li>
-                        <?php
-                        // $compteur++;
-                    }
-                // }
-                
-        }else{
-            ?>
-                <p>Pas d'activité enregistrée</p>
-            <?php
+    if(isset($lastPosts)){
+        foreach($lastPosts as $lastPost){
+        ?>
+            <li>Vous avez répondu au Topic <?= $lastPost->getTopic()->getTitre() ?></li>
+        <?php
         }
+    }else{
+        ?>
+        <p>Aucune activité</p>
+        <?php
+    }
     ?>
 </ul>
 <br>
@@ -45,21 +37,29 @@ $topics = $result["data"]['topics'];
 <p>Mes sujets : </p>
 <div id="mes-sujets">
 <?php 
-    foreach($topics as $topic){
+if(isset($topics)){
+        foreach($topics as $topic){
+        ?>
+        <div>
+            <a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=  $topic->getTitre()?></a> 
+            <p><?= $topic->getDateCreation() ?></p>
+            <?php
+                if($topic->getVerrouillage()==0){
+            ?>
+                    <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet</a>
+            <?php
+                }else{
+            ?>
+            Sujet clos
+            <?php } ?>
+                </div>
+        <?php
+        }
+}else{
     ?>
-    <p><?=  $topic->getTitre()?>
-        <?php
-            if($topic->getVerrouillage()==0){
-        ?>
-                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet</a>
-        <?php
-            }else{
-        ?>
-        Sujet clos
-        <?php } ?>
-    </p>
+    <p>Aucun sujet pour le moment..</p>
     <?php
-    }
+}
 ?>
 </div>
 
