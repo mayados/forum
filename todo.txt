@@ -1,6 +1,6 @@
 - Revoir le thème des pages + faire css de login et register + css des messages (erreur, succès)
 
-
+(FAIT) Afficher les 5 derniers posts d'un utilisateur
 (FAIT) Afficher correctement les messages d'erreur (lors du login et du register)
 (FAIT)- Se servir de la fonction redirectTo pour faire des redirections plus simples 
 (FAIT) - Verrouillage des sujets utilisateur peut clore les sujets qu'il a créé 
