@@ -108,6 +108,8 @@ use Model\Managers\TopicManager;
 
                 if($titre && $texte){
 
+                    $_SESSION['activites'][] = 'Vous avez créé un nouveau sujet';
+
                     /* On déclare une première fois la variable data, correspondant à ce qu'on veut insérer dans la table topic */
                     $data = ['titre'=>$titre,'verrouillage'=>'0','categorie_id'=>$id,'user_id'=>Session::getUser()->getId()];
                     // $topicManager->add($data);
@@ -118,6 +120,8 @@ use Model\Managers\TopicManager;
                     /* On attribue une nouvelle valeur à $data, correspondant à ce qu'on veut insérer dans la table post (on veut insérer $last, car l'éxécution de l'insertion provoque un return sur le dernier id inséré en base de données (La méthode add de Manager renvoie à la méthode insert de DAO, qui retourne lastInsertId)) */
                     $data = ['texte'=>$texte,'topic_id'=>$last,'user_id'=>Session::getUser()->getId()];
                     $postManager->add($data);
+
+                    $_SESSION['activites'][] = "Vous avez créé un nouveau post";
 
                 }
             }
