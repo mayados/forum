@@ -8,59 +8,70 @@ $lastPosts = $result["data"]['lastPosts'];
 // var_dump(array_count_values($activitesReverse));
 // var_dump($_SESSION['activites']);
 ?>
-<h4>Mon profil</h4>
 
-<p>Pseudo : <?= $_SESSION["user"]->getPseudo() ?></p>
+<div id="main-viewprofile">
+    <h3>Mon profil</h3>
 
-<p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>
+    <div class="infos-profil">
+        <p>Pseudo : <?= $_SESSION["user"]->getPseudo() ?></p>
 
-<br>
-<ul>Mes derniers posts :
-    <?php
-    if(isset($lastPosts)){
-        foreach($lastPosts as $lastPost){
-        ?>
-            <li>Vous avez répondu au Topic <?= $lastPost->getTopic()->getTitre() ?></li>
-        <?php
-        }
-    }else{
-        ?>
-        <p>Aucune activité</p>
-        <?php
-    }
-    ?>
-</ul>
-<br>
+        <p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>    
+    </div>
 
 
-
-<p>Mes sujets : </p>
-<div id="mes-sujets">
-<?php 
-if(isset($topics)){
-        foreach($topics as $topic){
-        ?>
-        <div>
-            <a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=  $topic->getTitre()?></a> 
-            <p><?= $topic->getDateCreation() ?></p>
+    <br>
+    <div class="derniers-posts">
+        <ul>Mes derniers posts :
             <?php
-                if($topic->getVerrouillage()==0){
+            if(isset($lastPosts)){
+                foreach($lastPosts as $lastPost){
+                ?>
+                    <li>Vous avez répondu au Topic <?= $lastPost->getTopic()->getTitre() ?> (<?= $lastPost->getDateCreation() ?>)</li>
+                <?php
+                }
+            }else{
+                ?>
+                <p>Aucune activité</p>
+                <?php
+            }
             ?>
-                    <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet</a>
+        </ul>   
+    </div>
+
+    <br>
+
+
+    <div class="sujets-profil">
+        <p>Mes sujets : </p>
+        <?php 
+        if(isset($topics)){
+                foreach($topics as $topic){
+                ?>
+                <div>
+                    <a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=  $topic->getTitre()?></a> 
+                    <p><?= $topic->getDateCreation() ?></p>
+                    <?php
+                        if($topic->getVerrouillage()==0){
+                    ?>
+                            <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
+                    <?php
+                        }else{
+                    ?>
+                    Sujet clos
+                    <?php } ?>
+                        </div>
+                <?php
+                }
+        }else{
+            ?>
+            <p>Aucun sujet pour le moment..</p>
             <?php
-                }else{
-            ?>
-            Sujet clos
-            <?php } ?>
-                </div>
-        <?php
         }
-}else{
-    ?>
-    <p>Aucun sujet pour le moment..</p>
-    <?php
-}
-?>
+        ?>
+    </div>    
 </div>
+
+
+
 
 
