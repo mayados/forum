@@ -288,3 +288,21 @@ footer{
     align-items: center;
     justify-content: center;
 }
+
+
+                                /************  VIEWPROFILE PAGE **************/
+
+#main-viewprofile{
+    background-color: orange;
+    min-height: 87vh;
+}
+
+#main-viewprofile h3{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 20px;
+}
+
+.sujets-profil{
+    display: flex;
+}
