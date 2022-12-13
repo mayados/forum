@@ -43,10 +43,12 @@
                             <?php
                         }
                         else{
-                            /* En cas de déconnexion*/
+                            /* En cas de déconnexion ou si non connecté*/
                             ?>
                             <a href="index.php?ctrl=security&action=directionConnexion">Connexion</a>
                             <a href="index.php?ctrl=security&action=directionInscription">Inscription</a>
+                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a> 
+                            <a href="index.php?ctrl=forum&action=listCategories">la liste des Categories</a>   
                         <?php
                         }
                    
