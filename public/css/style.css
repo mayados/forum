@@ -295,6 +295,10 @@ footer{
 #main-viewprofile{
     background-color: orange;
     min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #main-viewprofile h3{
@@ -303,6 +307,117 @@ footer{
     padding-top: 20px;
 }
 
-.sujets-profil{
+#main-viewprofile .sujets-posts{
+    padding: 10px;
+    width: 70%;
     display: flex;
+    justify-content: space-evenly;
+    border: 3px solid rgb(97, 59, 59);
+}
+
+#main-viewprofile .sujets-posts h4{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/*Partie Posts*/
+#main-viewprofile .derniers-posts{
+    border: 1px solid red;
+}
+
+#main-viewprofile .dernier-post{
+    border: 1px solid blue;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+
+/*Partie Sujets*/
+
+#main-viewprofile .sujets-profil{
+    border: 1px solid green;
+}
+
+#main-viewprofile .sujet-profil{
+    border: 1px solid purple;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    padding: 5px;
+}
+
+#main-viewprofile .sujet-profil i{
+    font-size: 0.8rem;
+}
+
+#main-viewprofile .titre-sujet{
+    border: 1px solid pink;
+    width: 30%;
+    font-size: 1.1rem;
+}
+
+#main-viewprofile .date-sujet{
+    border: 1px solid pink;
+    width: 30%;
+}
+
+#main-viewprofile .verrouillage-sujet{
+    border: 1px solid pink;
+    width: 20%;
+    text-align: end;
+}
+
+
+                                        /********  LISTTOPICS PAGE ************/
+
+#main-listTopics{
+    background-color: orange;
+    min-height: 87vh;
+    width: 100%;
+}
+
+
+#main-listTopics .topic-element{
+    border: 1px solid red;
+}
+
+#main-listTopics #topics-list h1{
+    text-align: center;
+    padding: 20px 0px 40px 0px;
+    color: #A95C68;
+    text-shadow: 1px 1px 1px black;
+}
+
+#main-listTopics #topics-list{
+    margin: 0px 10px 0px 10px;
+    min-height: 20vh;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+#main-listTopics #topics-list .topic-element:nth-child(even){
+    background-color: rgb(179, 172, 172);
+}
+
+#main-listTopics #topics-list .topic-element:nth-child(odd){
+    background-color: rgb(251, 251, 251);
+}
+
+#main-listTopics #topics-list .topic-element{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 50px;
+    border: 1px solid green;
+}
+
+#main-detailcategorie #topics-list .topic-element p {
+    max-width: 200px;
+    min-width: 150px;
+    min-height: 10px;
 }
