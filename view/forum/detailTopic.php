@@ -36,26 +36,28 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
     </div>
 
     <?php
-    if(App\Session::getUser() && $post->getTopic()->getVerrouillage()==0 ){
-    ?>
-    <div id="ajout-post">
-        <h4>Ecrire un message :</h4>
-        <form id="form-topic" action="index.php?ctrl=forum&action=nouveauPost&id=<?=$idTopic?>" method="post">
-            <div class="form-field">
-                <label for="texte">Message</label>
-                <textarea name="texte" id="texte" cols="30" rows="10" required></textarea>                
-            </div>
+    if(App\Session::getUser()){
+        if($post->getTopic()->getVerrouillage()==0 ){
+            ?>
+            <div id="ajout-post">
+                <h4>Ecrire un message :</h4>
+                <form id="form-topic" action="index.php?ctrl=forum&action=nouveauPost&id=<?=$idTopic?>" method="post">
+                    <div class="form-field">
+                        <label for="texte">Message</label>
+                        <textarea name="texte" id="texte" cols="30" rows="10" required></textarea>                
+                    </div>
 
-            <div class="form-field">
-                 <input class="form-button" name="submit" type="submit" value="Envoyer">                
+                    <div class="form-field">
+                        <input class="form-button" name="submit" type="submit" value="Envoyer">                
+                    </div>
+                </form>             
             </div>
-        </form>             
-    </div>
-    <?php
-    }else{
-        ?>
-            <p>Ce sujet est clos</p>
-        <?php
+            <?php
+        }else{
+            ?>
+                <p>Ce sujet est clos</p>
+            <?php
+        }
     }
     ?>
 </div>
