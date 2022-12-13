@@ -11,8 +11,10 @@ $topics = $result["data"]['topics'];
             foreach($topics as $topic ){
                 ?>
                 <div class="topic-element">
-                    <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a></p>
-
+                    <div class="topic-titre">
+                        <p><a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=$topic->getTitre()?></a></p>
+                    </div>
+                    <div class="topic-createur">
                         <?php
                             if($topic->getUser()==false){
                             ?>
@@ -22,7 +24,12 @@ $topics = $result["data"]['topics'];
                         ?>
                         <a href="index.php?ctrl=security&action=viewProfileUsers&id=<?= $topic->getUser()->getId() ?>"><?=$topic->getUser()->getPseudo()?></a>
                         <?php
-                            }
+                            }  
+                        ?>                      
+                    </div>
+                    <div class="topic-verrouillage">
+                        <?php
+
                         if(App\Session::isAdmin()){
                             if($topic->getVerrouillage()==NULL){
                                 ?>
@@ -34,8 +41,8 @@ $topics = $result["data"]['topics'];
                                 <?php
                             }
                         }
-                        ?>
-       
+                        ?>                        
+                    </div>
                 </div>
 
                 <?php
