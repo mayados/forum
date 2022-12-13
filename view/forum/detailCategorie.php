@@ -1,6 +1,7 @@
 <?php
 
 $topics = $result["data"]['topics'];
+$categorie = $result["data"]['categorie'];
 
 /* On peut récupérer l'id de la catégorie grâce à l'id placé dans le lien de la  page listCategories.php */
 $idCategorie = (isset($_GET["id"])) ? $_GET["id"] : null;
@@ -11,7 +12,7 @@ if (!$topics == null) {
 
     <div id="main-detailCategorie">
         <div id="list-topics">
-            <h1>Liste des topics</h1>
+            <h1><?= $categorie->getNomCategorie() ?></h1>
             <?php
             foreach ($topics as $topic) {
             ?>
@@ -35,30 +36,44 @@ if (!$topics == null) {
                     <div class="topic-date">
                         <p><?= $topic->getDateCreation() ?> </p>                        
                     </div>
-                    <div class="topic-verrouillage">
+                    <div class="topic-etat">
+                        <?php
+                            if ($topic->getVerrouillage() == NULL) {
+                        ?>
+                            <p>Ouvert</p>
+                        <?php
+                            }else{
+                        ?>
+                            <p>Clos</p>
+                        <?php
+                            }
+                        ?>
+                    </div>
                         <?php
                         if (App\Session::isAdmin()) {
                             if ($topic->getVerrouillage() == NULL) {
                         ?>
+                            <div class="topic-verrouillage">
                                 <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>&categorie=<?= $idCategorie ?>">Clore</a>
                             <?php
                             } else {
                             ?>
                                 <p>Sujet clos</p>
+                            </div>    
                         <?php
                             }
                         }
                         ?>                        
-                    </div>
-
                 </div>
             <?php
             }
             ?>
         </div>
+        <?php
+            if(App\Session::getUser()){
+        ?>
         <div id="ajout-topic">
             <h4>Ajouter un nouveau topic :</h4>
-
 
             <form id="form-topic" action="index.php?ctrl=forum&action=nouveauTopic&id=<?= $idCategorie ?>" method="post">
 
@@ -76,6 +91,9 @@ if (!$topics == null) {
                 </div>
             </form>
         </div>
+        <?php
+            }
+        ?>
     </div>
 <?php
 } else {
