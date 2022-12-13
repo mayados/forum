@@ -1,7 +1,6 @@
 <?php
 
 $topics = $result["data"]['topics'];
-    
 ?>
 
 <div id="main-listTopics">
@@ -27,22 +26,39 @@ $topics = $result["data"]['topics'];
                             }  
                         ?>                      
                     </div>
-                    <div class="topic-verrouillage">
+                    <div class="topic-date">
+                        <p><?= $topic->getDateCreation() ?> </p>                        
+                    </div>
+                    <div class="topic-etat">
                         <?php
+                            if ($topic->getVerrouillage() == NULL) {
+                        ?>
+                            <p>Ouvert</p>
+                        <?php
+                            }else{
+                        ?>
+                            <p>Clos</p>
+                        <?php
+                            }
+                        ?>
+                    </div>
 
+                        <?php
                         if(App\Session::isAdmin()){
                             if($topic->getVerrouillage()==NULL){
                                 ?>
+                                 <div class="topic-verrouillage">                                
                                     <p><a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore</a></p>
                                 <?php
                             }else{
                                 ?>
                                     <p>Sujet clos</p>
+                                </div>  
                                 <?php
                             }
                         }
                         ?>                        
-                    </div>
+
                 </div>
 
                 <?php
