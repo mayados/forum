@@ -45,6 +45,7 @@ nav{
     align-items: center;
     height: 7vh;
     padding: 0px 20px 0px 20px;
+    font-size: 1.4rem;
 }
 
 nav a, nav i{
@@ -174,6 +175,11 @@ footer{
     color: green;
 }
 
+#main-detailCategorie .topic-element .topic-etat{
+    width: 10%;
+    color: green;
+}
+
 #main-detailCategorie .topic-element .topic-verrouillage{
     width: 10%;
     color: green;
@@ -200,7 +206,7 @@ footer{
 }
 
 #main-detailCategorie #list-topics .topic-element:nth-child(odd){
-    background-color: rgb(251, 251, 251);
+    background-color: rgb(130, 130, 130);
 }
 
 #main-detailCategorie #ajout-topic{
@@ -577,6 +583,11 @@ footer{
     width: 20%;
 }
 
+#main-listTopics .topic-element .topic-etat{
+    width: 10%;
+    color: green;
+}
+
 #main-listTopics .topic-element .topic-verrouillage{
     width: 10%;
     color: green;
@@ -603,7 +614,7 @@ footer{
 }
 
 #main-listTopics #topics-list .topic-element:nth-child(odd){
-    background-color: rgb(251, 251, 251);
+    background-color: rgb(104, 102, 102);
 }
 
 
