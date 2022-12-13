@@ -143,19 +143,49 @@ footer{
 
 /* Refaire les couleurs (nav + main) */
 
-#main-detailcategorie{
+#main-detailCategorie{
+    background-color: orange;
     min-height: 87vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#main-detailcategorie #list-topics h1{
+#main-detailCategorie #list-topics{
+    width: 80%;
+}
+
+#main-detailCategorie #list-topics .topic-element{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 70px;
+}
+
+#main-detailCategorie .topic-element .topic-titre{
+    width: 20%;
+    font-size: 1.3rem;
+}
+
+#main-detailCategorie .topic-element .topic-createur{
+    width: 20%;
+    color: green;
+}
+
+#main-detailCategorie .topic-element .topic-verrouillage{
+    width: 10%;
+    color: green;
+}
+
+#main-detailCategorie #list-topics h1{
     text-align: center;
     padding: 20px 0px 40px 0px;
-    color: #A95C68;
     text-shadow: 1px 1px 1px black;
 }
 
-#main-detailcategorie #list-topics{
+#main-detailCategorie #list-topics{
     margin: 0px 10px 0px 10px;
     min-height: 20vh;
     text-align: center;
@@ -165,44 +195,32 @@ footer{
     padding-bottom: 20px;
 }
 
-#main-detailcategorie #list-topics a:nth-child(even){
+#main-detailCategorie #list-topics .topic-element:nth-child(even){
     background-color: rgb(179, 172, 172);
 }
 
-#main-detailcategorie #list-topics a:nth-child(odd){
-    background-color: white;
+#main-detailCategorie #list-topics .topic-element:nth-child(odd){
+    background-color: rgb(251, 251, 251);
 }
 
-#main-detailcategorie #list-topics .topic{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 50px;
-    border: 1px solid green;
-}
-
-#main-detailcategorie #list-topics .topic p {
-    max-width: 200px;
-    min-width: 150px;
-    min-height: 10px;
-}
-
-#main-detailcategorie #ajout-topic{
-    min-height: 20vh;
+#main-detailCategorie #ajout-topic{
+    min-height: 50vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid brown;
 
 }
 
-#main-detailcategorie #ajout-topic h4{
+#main-detailCategorie #ajout-topic h4{
     padding: 20px 0px 20px 0px;
     color: #A95C68;
     text-shadow: 1px 0px 1px black;
 }
 
-#main-detailcategorie #form-topic{
+#main-detailCategorie #form-topic{
     padding: 10px;
     background-color: #A95C68;
     display: flex;
@@ -214,18 +232,18 @@ footer{
     border-radius: 5px;
 }
 
-#main-detailcategorie #form-topic .form-field{
+#main-detailCategorie #form-topic .form-field{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
 }
 
-#main-detailcategorie #form-topic .form-field input, #main-detailcategorie #form-topic .form-field textarea{
+#main-detailCategorie #form-topic .form-field input, #main-detailCategorie #form-topic .form-field textarea{
     width: 100%;
 }
 
-#main-detailcategorie #form-topic .form-field .form-button{
+#main-detailCategorie #form-topic .form-field .form-button{
     height: 30px;
     width: 100px;
     text-align: center;
@@ -297,7 +315,6 @@ footer{
     min-height: 87vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -305,14 +322,16 @@ footer{
     text-align: center;
     font-size: 2rem;
     padding-top: 20px;
+    margin-bottom: 50px;
 }
 
 #main-viewprofile .sujets-posts{
+    margin-top: 100px;
     padding: 10px;
     width: 70%;
     display: flex;
-    justify-content: space-evenly;
-    border: 3px solid rgb(97, 59, 59);
+    justify-content: space-between;
+    /* border: 3px solid rgb(97, 59, 59); */
 }
 
 #main-viewprofile .sujets-posts h4{
@@ -322,25 +341,28 @@ footer{
 
 /*Partie Posts*/
 #main-viewprofile .derniers-posts{
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    width: 40%;
 }
 
 #main-viewprofile .dernier-post{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     min-height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 
 /*Partie Sujets*/
 
 #main-viewprofile .sujets-profil{
-    border: 1px solid green;
+    /* border: 1px solid green; */
+    width: 50%;
 }
 
 #main-viewprofile .sujet-profil{
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -353,20 +375,175 @@ footer{
 }
 
 #main-viewprofile .titre-sujet{
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
+    text-align: center;
     width: 30%;
     font-size: 1.1rem;
 }
 
 #main-viewprofile .date-sujet{
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     width: 30%;
 }
 
 #main-viewprofile .verrouillage-sujet{
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     width: 20%;
-    text-align: end;
+    text-align: center;
+}
+
+
+                                        /**************** USERSPROFILE PAGE *****************/
+
+#main-usersProfile{
+    background-color: orange;
+    min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-usersProfile h3{
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+#main-usersProfile .infos-profil .ban{
+    padding-top: 10px;
+    text-align: center;
+}
+
+#main-usersProfile .sujets-posts{
+    margin-top: 100px;
+    padding: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    /* border: 3px solid rgb(97, 59, 59); */
+}
+
+#main-usersProfile .sujets-posts h4{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/*Partie Posts*/
+#main-usersProfile .derniers-posts{
+    /* border: 1px solid red; */
+    width: 40%;
+}
+
+#main-usersProfile .dernier-post{
+    /* border: 1px solid blue; */
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*Partie Sujets*/
+
+#main-usersProfile .sujets-profil{
+    /* border: 1px solid green; */
+    width: 50%;
+    text-align: center;
+}
+
+#main-usersProfile .sujet-profil{
+    /* border: 1px solid purple; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    padding: 5px;
+}
+
+#main-usersProfile .sujet-profil i{
+    font-size: 0.8rem;
+}
+
+#main-usersProfile .titre-sujet{
+    /* border: 1px solid pink; */
+    text-align: center;
+    width: 30%;
+    font-size: 1.1rem;
+}
+
+#main-usersProfile .date-sujet{
+    /* border: 1px solid pink; */
+    width: 30%;
+}
+
+
+
+                                        /*************** USERS PAGE *****************/
+
+#main-users{
+    background-color: orange;
+    min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#main-users h1{
+    padding: 50px;
+}
+
+#main-users #list-users{
+    width: 50%;
+}
+
+#main-users #list-users .user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+}
+
+#main-users #list-users .user .user-pseudo, #main-users #list-users .user .user-date, #main-users #list-users .user .ban-user{
+    text-align: center;
+    width: 30%;
+}
+
+#main-users #list-users .user:nth-child(even){
+    background-color: rgb(242, 129, 129);
+}
+
+#main-users #list-users .user:nth-child(odd){
+    background-color: rgb(195, 46, 46);
+}
+
+
+                                        /***************  NEWCATEGORIE PAGE ****************/
+#main-newCategorie{
+    background-color: orange;
+    min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-newCategorie h4{
+    padding: 50px;
+}
+
+#main-newCategorie form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid gray;
+    gap: 10px;
+}
+
+#main-newCategorie #categorie-nom{
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -376,17 +553,38 @@ footer{
     background-color: orange;
     min-height: 87vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
+#main-listTopics #topics-list{
+    width: 80%;
+}
 
-#main-listTopics .topic-element{
-    border: 1px solid red;
+#main-listTopics #topics-list .topic-element{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 70px;
+}
+
+#main-listTopics .topic-element .topic-titre{
+    width: 20%;
+    font-size: 1.3rem;
+}
+
+#main-listTopics .topic-element .topic-createur{
+    width: 20%;
+}
+
+#main-listTopics .topic-element .topic-verrouillage{
+    width: 10%;
+    color: green;
 }
 
 #main-listTopics #topics-list h1{
     text-align: center;
     padding: 20px 0px 40px 0px;
-    color: #A95C68;
     text-shadow: 1px 1px 1px black;
 }
 
@@ -408,16 +606,3 @@ footer{
     background-color: rgb(251, 251, 251);
 }
 
-#main-listTopics #topics-list .topic-element{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 50px;
-    border: 1px solid green;
-}
-
-#main-detailcategorie #topics-list .topic-element p {
-    max-width: 200px;
-    min-width: 150px;
-    min-height: 10px;
-}
