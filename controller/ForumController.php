@@ -61,11 +61,13 @@ use Model\Managers\TopicManager;
             $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
             $topicManager = new TopicManager();
+            $categorieManager = new CategorieManager();
 
             return [
                 "view" => VIEW_DIR . "forum/detailCategorie.php",
                 "data" => [
-                    "topics" => $topicManager->findTopicsByCategorie($id)
+                    "topics" => $topicManager->findTopicsByCategorie($id),
+                    "categorie" => $categorieManager->findOneById($id)
                 ]
             ];
         }
