@@ -38,7 +38,8 @@ if (!$topics == null) {
                     </div>
                     <div class="topic-etat">
                         <?php
-                            if ($topic->getVerrouillage() == NULL) {
+                        if(!App\Session::isAdmin()){
+                            if($topic->getVerrouillage() == NULL) {
                         ?>
                             <p>Ouvert</p>
                         <?php
@@ -47,21 +48,28 @@ if (!$topics == null) {
                             <p>Clos</p>
                         <?php
                             }
+                        }
                         ?>
                     </div>
                         <?php
-                        if (App\Session::isAdmin()) {
+                        if(App\Session::isAdmin()){
+                            ?>
+                    <div class="topic-verrouillage">
+                            <?php
                             if ($topic->getVerrouillage() == NULL) {
                         ?>
-                            <div class="topic-verrouillage">
-                                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>&categorie=<?= $idCategorie ?>">Clore</a>
+                            
+                                <p><a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>&categorie=<?= $idCategorie ?>">Clore</a></p>
                             <?php
-                            } else {
+                            }else{
                             ?>
                                 <p>Sujet clos</p>
-                            </div>    
+                       
                         <?php
                             }
+                        ?>
+                    </div>     
+                        <?php
                         }
                         ?>                        
                 </div>
