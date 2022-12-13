@@ -606,3 +606,90 @@ footer{
     background-color: rgb(251, 251, 251);
 }
 
+
+                                    /********  LOGIN PAGE **********/
+
+#main-connexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}      
+
+#main-connexion h4{
+    padding: 50px 0px 40px 0px;
+    font-size: 2rem;
+}
+
+#main-connexion form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid gray; */
+    width: 20%;
+    height: 30vh;
+}
+
+#main-connexion form input{
+    height: 40px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+}
+
+#main-connexion form #mail-connexion, #main-connexion form #password-connexion, #main-connexion form #connexion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+         
+#main-connexion form #connexion{
+    margin-top: 30px;
+    width: 50%;
+}
+
+
+                                            /*********  REGISTER PAGE *********/
+
+#main-inscription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}      
+
+#main-inscription h4{
+    padding: 50px 0px 40px 0px;
+    font-size: 2rem;
+}
+
+#main-inscription form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* border: 1px solid gray; */
+    width: 20%;
+    height: 30vh;
+}
+
+#main-inscription form input{
+    height: 40px;
+    width: 80%;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+}
+
+#main-inscription form #pseudo-inscription, #main-inscription form #mail-inscription, #main-inscription form .password-inscription, #main-inscription form #inscription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+         
+#main-inscription form #inscription{
+    margin-top: 30px;
+    width: 50%;
+}
