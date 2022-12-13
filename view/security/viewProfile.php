@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* S'il y a des datas... */
 $topics = $result["data"]['topics'];
 $lastTopics = $result["data"]['lastTopics'];
@@ -15,63 +15,65 @@ $lastPosts = $result["data"]['lastPosts'];
     <div class="infos-profil">
         <p>Pseudo : <?= $_SESSION["user"]->getPseudo() ?></p>
 
-        <p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>    
+        <p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>
     </div>
 
-
-    <br>
-    <div class="derniers-posts">
-        <ul>Mes derniers posts :
+    <div class="sujets-posts">
+        <div class="derniers-posts">
+            <h4>Mes derniers posts :</h4>
             <?php
-            if(isset($lastPosts)){
-                foreach($lastPosts as $lastPost){
-                ?>
-                    <li>Vous avez répondu au Topic <?= $lastPost->getTopic()->getTitre() ?> (<?= $lastPost->getDateCreation() ?>)</li>
+            if (isset($lastPosts)) {
+                foreach ($lastPosts as $lastPost) {
+            ?>
+                    <div class="dernier-post">
+                        <p>Vous avez répondu au Topic <?= $lastPost->getTopic()->getTitre() ?> (<?= $lastPost->getDateCreation() ?>)</p>
+                    </div>
                 <?php
                 }
-            }else{
+            } else {
                 ?>
                 <p>Aucune activité</p>
-                <?php
+            <?php
             }
             ?>
-        </ul>   
-    </div>
+        </div>
 
-    <br>
-
-
-    <div class="sujets-profil">
-        <p>Mes sujets : </p>
-        <?php 
-        if(isset($topics)){
-                foreach($topics as $topic){
-                ?>
-                <div>
-                    <a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId()?>"><?=  $topic->getTitre()?></a> 
-                    <p><?= $topic->getDateCreation() ?></p>
-                    <?php
-                        if($topic->getVerrouillage()==0){
-                    ?>
-                            <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
-                    <?php
-                        }else{
-                    ?>
-                    Sujet clos
-                    <?php } ?>
+        <div class="sujets-profil">
+            <h4>Mes sujets : </h4>
+            <?php
+            if (isset($topics)) {
+                foreach ($topics as $topic) {
+            ?>
+                    <div class="sujet-profil">
+                        <div class="titre-sujet">
+                            <a href="index.php?ctrl=forum&action=detailTopic&id=<?= $topic->getId() ?>"><?= $topic->getTitre() ?></a>
                         </div>
+                        <div class="date-sujet">
+                            <p><?= $topic->getDateCreation() ?></p>
+                        </div>
+                        <?php
+                        if ($topic->getVerrouillage() == 0) {
+                        ?>
+                            <div class="verrouillage-sujet">
+                                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="verrouillage-sujet">
+                                <p>Sujet clos</p>
+                            </div>
+                        <?php } ?>
+                    </div>
                 <?php
                 }
-        }else{
-            ?>
-            <p>Aucun sujet pour le moment..</p>
+            } else {
+                ?>
+                <p>Aucun sujet pour le moment..</p>
             <?php
-        }
-        ?>
-    </div>    
+            }
+            ?>
+        </div>
+    </div>
+
 </div>
-
-
-
-
-
