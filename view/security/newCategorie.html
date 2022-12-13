@@ -1,11 +1,14 @@
-<h4>Créer une nouvelle catégorie :</h4>
+<div id="main-newCategorie">
+    <h4>Créer une nouvelle catégorie :</h4>
+
+    <form action="index.php?ctrl=security&action=nouvelleCategorie" method="post">
+        <div id="categorie-nom">
+            <label for="nomCategorie">Nom de la catégorie :</label>
+            <input type="text" id="nomCategorie" name="nomCategorie" required>            
+        </div>
+        <input name="submit" type="submit" value="Envoyer">
+    </form>    
+</div>
+
 
     
-<form action="index.php?ctrl=security&action=nouvelleCategorie" method="post">
-
-    <label for="nomCategorie">Nom de la catégorie :</label>
-    <input type="text" id="nomCategorie" name="nomCategorie" required>
-
-    <input name="submit" type="submit" value="Envoyer">
-
-</form>
