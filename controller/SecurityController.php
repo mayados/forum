@@ -189,6 +189,43 @@
 
         }
 
+        /* Il faut supprimer le topic et les messages associés (sinon ça va prendre de la place pour rien en bdd) */
+        public function deleteTopicAndPosts(){
+
+            $this->restrictTo("admin");
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $topicManager = new TopicManager();
+            $postManager = new PostManager();
+
+            $postManager->deletePostsByTopic($id);
+            $topicManager->delete($id);
+
+            Session::addFlash('success','Sujet supprimé');
+
+            $this->redirectTo("forum","listTopics");
+
+
+        }
+
+        public function deletePost(){
+
+            $this->restrictTo("admin");
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $idTopic = (isset($_GET["idTopic"])) ? $_GET["idTopic"] : null;
+
+
+            $postManager = new PostManager();
+
+            $postManager->delete($id);
+
+            $this->redirectTo("forum","detailTopic", $idTopic);
+
+        }
+
         /* Fonction pour créer une nouvelle catégorie en tant qu'admin */
         public function nouvelleCategorie(){
             $this->restrictTo("admin");
@@ -225,4 +262,47 @@
             $this->redirectTo("forum","detailTopic", $id);
 
         }
+
+        public function viewModifierTopic(){
+
+            $topicManager = new TopicManager();
+            $postManager = new PostManager();
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            return [
+                "view" => VIEW_DIR . "security/modifierTopic.php",
+                "data" => [
+                "topic" => $topicManager->findOneById($id),
+                "post" => $postManager->firstPostByTopic($id)
+                ]
+            ];
+        }
+
+
+        public function updateTopic(){
+
+            $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
+            $topicManager = new TopicManager();
+            $postManager = new PostManager();
+
+            if(isset($_POST['submit'])){
+
+                $titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+                $texte = filter_input(INPUT_POST, "texte", FILTER_SANITIZE_SPECIAL_CHARS);
+
+                if($titre && $texte){
+
+                    //RECUPERER L ID DU MESSAGE SINON CA MODIFIE TOUS LES MESSAGES DU SUJET
+                    // $topicManager->updateTopic($id,$titre);
+                    // $postManager->updateFirstPostTopic($id,$texte);
+
+                }
+            }
+
+            $this->redirectTo("forum","detailTopic", $id);
+        }
+
+
 }
