@@ -79,14 +79,14 @@
 
         }
 
-        public function updateFirstPostTopic($texte){
+        public function updateFirstPostTopic($texte,$idPost){
 
             $sql = "UPDATE ".$this->tableName."
             SET texte = :texte
-            WHERE topic_id = 94";
+            WHERE id_post = :idPost";
 
             return $this->getSingleScalarResult(
-                DAO::select($sql, ['texte' => $texte]),
+                DAO::select($sql, ['texte' => $texte,'idPost' => $idPost]),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
