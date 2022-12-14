@@ -104,5 +104,22 @@
             );
 
         }
+
+        /* Créer une sorte de fonction findAll() pour trouver tous les sujets et le nombre de posts (count(post)) */
+
+        public function findAllTopicsAndPosts(){
+            $sql = "SELECT titre,id_topic,topic.dateCreation,topic.user_id,topic.verrouillage,categorie_id, COUNT(texte) AS countPost
+            FROM ".$this->tableName."
+            LEFT JOIN post ON topic.id_topic = post.topic_id
+            WHERE id_topic = id_".$this->tableName." 
+            GROUP BY titre, id_topic
+            ORDER BY topic.dateCreation DESC
+            ";
+
+            return $this->getMultipleResults(
+                DAO::select($sql), 
+                $this->className
+            );
+        }
         
     }
