@@ -2,7 +2,7 @@
 
 $topic = $result["data"]['topic'];
 $post = $result["data"]['post'];
-var_dump($post->getTexte());
+// var_dump($post->getId());
 
 if($_SESSION["user"]->getId() == $topic->getUser()->getId()){
 ?>
@@ -10,7 +10,7 @@ if($_SESSION["user"]->getId() == $topic->getUser()->getId()){
     <div id="ajout-topic">
         <h4>Modifier le topic :</h4>
 
-        <form id="form-topic" action="index.php?ctrl=security&action=updateTopic&id=<?= $topic->getId()?>" method="post">
+        <form id="form-topic" action="index.php?ctrl=security&action=updateTopic&id=<?= $topic->getId()?>&idPost=<?= $post->getId() ?>" method="post">
 
             <div class="form-field">
                 <label for="titre">Titre du topic :</label>
