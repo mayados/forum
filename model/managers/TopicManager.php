@@ -94,11 +94,11 @@
         public function updateTopic($id,$titre){
 
             $sql = "UPDATE ".$this->tableName."
-            SET titre = $titre
+            SET titre = :titre
             WHERE id_topic = :id";
 
             return $this->getSingleScalarResult(
-                DAO::select($sql, ['id' => $id]),
+                DAO::select($sql, ['id' => $id, 'titre' => $titre]),
                 /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
                 $this->className
             );
