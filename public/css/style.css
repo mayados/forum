@@ -593,6 +593,11 @@ footer{
     color: green;
 }
 
+#main-listTopics .topic-element .supprimer-sujet{
+    width: 10%;
+    color: green;
+}
+
 #main-listTopics #topics-list h1{
     text-align: center;
     padding: 20px 0px 40px 0px;
