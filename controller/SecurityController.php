@@ -284,6 +284,8 @@
 
             $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
+            $idPost = (isset($_GET["idPost"])) ? $_GET["idPost"] : null;
+
             $topicManager = new TopicManager();
             $postManager = new PostManager();
 
@@ -295,8 +297,8 @@
                 if($titre && $texte){
 
                     //RECUPERER L ID DU MESSAGE SINON CA MODIFIE TOUS LES MESSAGES DU SUJET
-                    // $topicManager->updateTopic($id,$titre);
-                    // $postManager->updateFirstPostTopic($id,$texte);
+                    $topicManager->updateTopic($id,$titre);
+                    $postManager->updateFirstPostTopic($texte,$idPost);
 
                 }
             }
