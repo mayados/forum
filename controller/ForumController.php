@@ -50,7 +50,7 @@ use Model\Managers\TopicManager;
                 "view" => VIEW_DIR . "forum/listTopics.php",
                 "data" => [
                     /* Le premier élément sert à dire sur quoi on se base pour trier, et le deuxième représente l'ordre de tri */
-                    "topics" => $topicManager->findAll(["dateCreation","DESC"])
+                    "topics" => $topicManager->findAllTopicsAndPosts()
                 ]
             ];  
         }
