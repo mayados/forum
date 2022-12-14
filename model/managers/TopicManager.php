@@ -90,5 +90,19 @@
             );
 
         }
+
+        public function updateTopic($id,$titre){
+
+            $sql = "UPDATE ".$this->tableName."
+            SET titre = $titre
+            WHERE id_topic = :id";
+
+            return $this->getSingleScalarResult(
+                DAO::select($sql, ['id' => $id]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+
+        }
         
     }
