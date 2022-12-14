@@ -13,6 +13,7 @@
         private $dateCreation;
         private $verrouillage;
         private $categorie;
+        private $countPost;
 
         /* Prend des tableaux associatifs et les transforme en objets ou tableaux d'objets (exemple : pour accéder à une propriété on va manipuler une méthode de l'objet ex ->get...) */
         public function __construct($data){         
@@ -125,6 +126,26 @@
         public function setCategorie($categorie)
         {
                 $this->categorie = $categorie;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of countPost
+         */ 
+        public function getCountPost()
+        {
+                return $this->countPost;
+        }
+
+        /**
+         * Set the value of countPost
+         *
+         * @return  self
+         */ 
+        public function setCountPost($countPost)
+        {
+                $this->countPost = $countPost;
 
                 return $this;
         }
