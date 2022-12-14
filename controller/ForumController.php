@@ -42,6 +42,7 @@ use Model\Managers\TopicManager;
         /* On crée une fonction qui permet de lister tous les topics = sujets */
         public function listTopics(){
             $topicManager = new TopicManager();
+            $postManager = new PostManager();
             /* On redirige vers la vue correspondante, ici c'est listCategories.php */
             /* Le nom des datas envoyées est "categories", qui fait appelle à la méthode findAll de l'instance $categorieManager, avec la colonne souhaitée. findAll est présente dans la class Manager du dossier App. MAIS comme CategorieManager a pour class mère Manager, on a accès à cette fonction */
            
@@ -112,7 +113,7 @@ use Model\Managers\TopicManager;
 
                 if($titre && $texte){
 
-                    $_SESSION['activites'][] = 'Vous avez créé un nouveau sujet';
+                    // $_SESSION['activites'][] = 'Vous avez créé un nouveau sujet';
 
                     /* On déclare une première fois la variable data, correspondant à ce qu'on veut insérer dans la table topic */
                     $data = ['titre'=>$titre,'verrouillage'=>'0','categorie_id'=>$id,'user_id'=>Session::getUser()->getId()];
@@ -125,7 +126,7 @@ use Model\Managers\TopicManager;
                     $data = ['texte'=>$texte,'topic_id'=>$last,'user_id'=>Session::getUser()->getId()];
                     $postManager->add($data);
 
-                    $_SESSION['activites'][] = "Vous avez créé le premier post d'un sujet";
+                    // $_SESSION['activites'][] = "Vous avez créé le premier post d'un sujet";
 
                 }
             }
@@ -155,4 +156,6 @@ use Model\Managers\TopicManager;
             }
             $this->redirectTo("forum","detailTopic", $id);
         }
+
+
     }
