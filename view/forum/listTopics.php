@@ -26,6 +26,9 @@ $topics = $result["data"]['topics'];
                             }  
                         ?>                      
                     </div>
+                    <div class="topic-nbPosts">
+                        <p><?= $topic->getCountPost() ?></p>
+                    </div>
                     <div class="topic-date">
                         <p><?= $topic->getDateCreation() ?> </p>                        
                     </div>
