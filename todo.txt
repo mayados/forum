@@ -1,6 +1,8 @@
 - Revoir le thème des pages + faire css de login et register + css des messages (erreur, succès)
+- Modifier un topic pour l'utilisateur qui l'a créé
 
-
+(FAIT) Ajouter dans listTopics le moyen de supprimer un sujet pour l'admin
+(FAIT) Ajouter le moyen, pour l'admin, de supprimer un post
 (FAIT) Ajouter les noms du sujet sur detail Topic
 (FAIT) Afficher les 5 derniers posts d'un utilisateur
 (FAIT) Afficher correctement les messages d'erreur (lors du login et du register)
