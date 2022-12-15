@@ -11,11 +11,11 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
     <h1>Sujet : <?= $topic->getTitre() ?></h1>
     <div id="posts">
         <?php
-        if($_SESSION["user"]->getId() == $topic->getUser()->getId()){
-            ?>
-                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
-                <a href="index.php?ctrl=security&action=viewModifierTopic&id=<?= $topic->getId() ?>">Modifier le topic</a>
-            <?php
+        if(isset($_SESSION["user"]) && $_SESSION["user"]->getId() == $topic->getUser()->getId()){
+                ?>
+                    <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
+                    <a href="index.php?ctrl=security&action=viewModifierTopic&id=<?= $topic->getId() ?>">Modifier le topic</a>
+                <?php
         }
         foreach($posts as $post ){
             ?>
