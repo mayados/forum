@@ -27,7 +27,7 @@ $topics = $result["data"]['topics'];
                         ?>                      
                     </div>
                     <div class="topic-nbPosts">
-                        <p><?= $topic->getCountPost() ?></p>
+                        <p><i class="fa-regular fa-message"></i> <?= $topic->getCountPost() ?></p>
                     </div>
                     <div class="topic-date">
                         <p><?= $topic->getDateCreation() ?> </p>                        
