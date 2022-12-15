@@ -33,6 +33,9 @@ if (!$topics == null) {
                         }
                         ?>
                     </div>
+                    <div class="topic-nbPosts">
+                        <p><i class="fa-regular fa-message"></i> <?= $topic->getCountPost() ?></p>
+                    </div>
                     <div class="topic-date">
                         <p><?= $topic->getDateCreation() ?> </p>                        
                     </div>
