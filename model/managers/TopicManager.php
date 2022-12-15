@@ -31,10 +31,12 @@
         /* Méthode pour trouver tous les sujets d'une catégorie */
         public function findTopicsByCategorie($id){
 
-            $sql = "SELECT titre, dateCreation, id_topic, user_id, verrouillage
-            FROM ".$this->tableName."
-            WHERE categorie_id = :id
-            ORDER BY dateCreation DESC";
+            $sql = "SELECT titre, topic.dateCreation, id_topic, topic.user_id, verrouillage, COUNT(texte) AS countPost
+                    FROM topic
+                    LEFT JOIN post ON topic.id_topic = post.topic_id
+                    WHERE id_".$this->tableName." AND categorie_id = :id
+                    GROUP BY titre, id_topic
+                    ORDER BY dateCreation DESC";
 
             /* Plusieurs objets sont attendus car il y a plusieurs topics */
             return $this->getMultipleResults(
