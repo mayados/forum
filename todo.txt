@@ -1,6 +1,7 @@
 - Revoir le thème des pages + faire css de login et register + css des messages (erreur, succès)
-- Afficher le nombre de messages par topic
 
+
+(FAIT)Afficher le nombre de messages par topic
 (FAIT) Modifier un topic pour l'utilisateur qui l'a créé
 (FAIT) Ajouter dans listTopics le moyen de supprimer un sujet pour l'admin
 (FAIT) Ajouter le moyen, pour l'admin, de supprimer un post
