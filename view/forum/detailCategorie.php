@@ -11,8 +11,27 @@ if (!$topics == null) {
 ?>
 
     <div id="main-detailCategorie">
+        <h1><?= $categorie->getNomCategorie() ?></h1>
+        <a href="index.php?ctrl=forum&action=listCategories">Retour</a>   
+        <div id="topics-bar">
+            <div id="titre-bar">
+                <p>Titre</p>
+            </div>
+            <div id="auteur-bar">
+                <p>Auteur</p>
+            </div>
+            <div id="posts-bar">
+                <p>Posts</p>
+            </div>
+            <div id="creation-bar">
+                <p>Création</p>
+            </div>
+            <div id="etat-bar">
+                <p>Etat</p>
+            </div>
+         </div> 
+        
         <div id="list-topics">
-            <h1><?= $categorie->getNomCategorie() ?></h1>
             <?php
             foreach ($topics as $topic) {
             ?>

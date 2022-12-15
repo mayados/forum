@@ -4,8 +4,26 @@ $topics = $result["data"]['topics'];
 ?>
 
 <div id="main-listTopics">
+         <h1>Topics</h1> 
+         <div id="topics-bar">
+            <div id="titre-bar">
+                <p>Titre</p>
+            </div>
+            <div id="auteur-bar">
+                <p>Auteur</p>
+            </div>
+            <div id="posts-bar">
+                <p>Posts</p>
+            </div>
+            <div id="creation-bar">
+                <p>Création</p>
+            </div>
+            <div id="etat-bar">
+                <p>Etat</p>
+            </div>
+         </div> 
     <div id="topics-list">
-        <h1>liste topics</h1>
+        
             <?php
             foreach($topics as $topic ){
                 ?>
