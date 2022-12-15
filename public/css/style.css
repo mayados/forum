@@ -39,7 +39,6 @@ nav{
     /*Penser à changer le background pour une couleur vermeille*/
     background-color: black;
     color: white;
-    border-bottom: 1px solid #A95C68;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,6 +104,7 @@ footer{
     align-items: center;
     gap: 50px;
     color: white;
+    background-color: rgb(32, 32, 32);
 }
 
 #main-listcategories h1{
@@ -121,13 +121,14 @@ footer{
 }
 
 #main-listcategories .categorie-item{
-    border: 1px solid orange;
-    height: 50px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: orange;
+    color: rgb(255, 255, 255);
 }
 
 #main-listcategories .categorie-item p{
@@ -135,8 +136,10 @@ footer{
 }
 
 #main-listcategories .categorie-item:hover{
-    background-color: #ee9654;
+    backdrop-filter: blur(5px);
     cursor: pointer;
+    border-top: 3px solid rgb(60, 149, 130);
+    border-bottom: 3px solid rgb(60, 149, 130);
 }
 
 
@@ -145,7 +148,10 @@ footer{
 /* Refaire les couleurs (nav + main) */
 
 #main-detailCategorie{
-    background-color: orange;
+    background: url(../img/back13.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     min-height: 87vh;
     width: 100%;
     display: flex;
@@ -154,8 +160,61 @@ footer{
     align-items: center;
 }
 
+#main-detailCategorie h1{
+    padding: 50px;
+    text-shadow: 1px 1px 1px black;   
+}
+
+#main-detailCategorie #list-topics .topic-element:nth-child(even){
+    background-color: rgb(163, 164, 164);}
+
+#main-detailCategorie #list-topics .topic-element:nth-child(odd){
+    background-color: rgb(197, 200, 200);
+}
+
+#main-detailCategorie  #topics-bar{
+    background-color: rgb(34, 157, 147);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 7vh;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 1px solid white;
+}
+
+#main-detailCategorie  #topics-bar #titre-bar,
+#main-detailCategorie  #topics-bar #auteur-bar,
+#main-detailCategorie  #topics-bar #creation-bar,
+#main-detailCategorie  #topics-bar #posts-bar,
+#main-detailCategorie  #topics-bar #etat-bar{
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+#main-detailCategorie  #topics-bar #titre-bar,
+#main-detailCategorie  #topics-bar #auteur-bar,
+#main-detailCategorie  #topics-bar #creation-bar{
+    width: 20%;
+}
+
+#main-detailCategorie  #topics-bar #posts-bar,
+#main-detailCategorie  #topics-bar #etat-bar{
+    width: 10%;
+}
+
 #main-detailCategorie #list-topics{
     width: 80%;
+    backdrop-filter: blur(10px);
+    margin: 0px 10px 0px 10px;
+    min-height: 20vh;
+    border-radius: 5px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 #main-detailCategorie #list-topics .topic-element{
@@ -163,6 +222,11 @@ footer{
     justify-content: space-around;
     align-items: center;
     min-height: 70px;
+    border-radius: 5px;
+}
+
+#main-detailCategorie #list-topics .topic-element:hover{
+    background-color: gray;
 }
 
 #main-detailCategorie .topic-element .topic-titre{
@@ -175,6 +239,15 @@ footer{
     color: green;
 }
 
+#main-detailCategorie .topic-element .topic-nbPosts{
+    width: 10%;
+}
+
+#main-detailCategorie .topic-element .topic-date{
+    width: 20%;
+}
+
+
 #main-detailCategorie .topic-element .topic-etat{
     width: 10%;
     color: green;
@@ -185,30 +258,6 @@ footer{
     color: green;
 }
 
-#main-detailCategorie #list-topics h1{
-    text-align: center;
-    padding: 20px 0px 40px 0px;
-    text-shadow: 1px 1px 1px black;
-}
-
-#main-detailCategorie #list-topics{
-    margin: 0px 10px 0px 10px;
-    min-height: 20vh;
-    text-align: center;
-    flex-direction: column;
-    display: flex;
-    gap: 10px;
-    padding-bottom: 20px;
-}
-
-#main-detailCategorie #list-topics .topic-element:nth-child(even){
-    background-color: rgb(179, 172, 172);
-}
-
-#main-detailCategorie #list-topics .topic-element:nth-child(odd){
-    background-color: rgb(130, 130, 130);
-}
-
 #main-detailCategorie #ajout-topic{
     min-height: 50vh;
     width: 100%;
@@ -216,23 +265,21 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid brown;
-
 }
 
 #main-detailCategorie #ajout-topic h4{
     padding: 20px 0px 20px 0px;
-    color: #A95C68;
-    text-shadow: 1px 0px 1px black;
+    color: white;
+    text-shadow: 1px 1px 2px black;
 }
 
 #main-detailCategorie #form-topic{
     padding: 10px;
-    background-color: #A95C68;
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     text-align: center;    
-    width: 50%;
+    width: 30%;
     gap: 20px;
     margin-bottom: 40px;
     border-radius: 5px;
@@ -556,15 +603,77 @@ footer{
                                         /********  LISTTOPICS PAGE ************/
 
 #main-listTopics{
-    background-color: orange;
+    /* background-color: rgb(218, 218, 218); */
+    background: url(../img/back13.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     min-height: 87vh;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-listTopics h1{
+    padding: 50px;
+    text-shadow: 1px 1px 1px black;    
+}
+
+#main-listTopics  #topics-bar{
+    background-color: rgb(34, 157, 147);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 7vh;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 1px solid white;
+}
+
+#main-listTopics  #topics-bar #titre-bar,
+#main-listTopics  #topics-bar #auteur-bar,
+#main-listTopics  #topics-bar #creation-bar,
+#main-listTopics  #topics-bar #posts-bar,
+#main-listTopics  #topics-bar #etat-bar{
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+#main-listTopics  #topics-bar #titre-bar,
+#main-listTopics  #topics-bar #auteur-bar,
+#main-listTopics  #topics-bar #creation-bar{
+    width: 20%;
+}
+
+#main-listTopics  #topics-bar #posts-bar,
+#main-listTopics  #topics-bar #etat-bar{
+    width: 10%;
 }
 
 #main-listTopics #topics-list{
     width: 80%;
+}
+
+#main-listTopics #topics-list{
+    backdrop-filter: blur(10px);
+    margin: 0px 10px 0px 10px;
+    min-height: 20vh;
+    border-radius: 5px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#main-listTopics #topics-list .topic-element:nth-child(even){
+    background-color: rgb(163, 164, 164);
+}
+
+#main-listTopics #topics-list .topic-element:nth-child(odd){
+    background-color: rgb(197, 200, 200);
 }
 
 #main-listTopics #topics-list .topic-element{
@@ -572,14 +681,27 @@ footer{
     justify-content: space-around;
     align-items: center;
     min-height: 70px;
+    border-radius: 5px;
+}
+
+#main-listTopics #topics-list .topic-element:hover{
+    background-color: gray;
 }
 
 #main-listTopics .topic-element .topic-titre{
     width: 20%;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 #main-listTopics .topic-element .topic-createur{
+    width: 20%;
+}
+
+#main-listTopics .topic-element .topic-nbPosts{
+    width: 10%;
+}
+
+#main-listTopics .topic-element .topic-date{
     width: 20%;
 }
 
@@ -598,29 +720,6 @@ footer{
     color: green;
 }
 
-#main-listTopics #topics-list h1{
-    text-align: center;
-    padding: 20px 0px 40px 0px;
-    text-shadow: 1px 1px 1px black;
-}
-
-#main-listTopics #topics-list{
-    margin: 0px 10px 0px 10px;
-    min-height: 20vh;
-    text-align: center;
-    flex-direction: column;
-    display: flex;
-    gap: 10px;
-    padding-bottom: 20px;
-}
-
-#main-listTopics #topics-list .topic-element:nth-child(even){
-    background-color: rgb(179, 172, 172);
-}
-
-#main-listTopics #topics-list .topic-element:nth-child(odd){
-    background-color: rgb(104, 102, 102);
-}
 
 
                                     /********  LOGIN PAGE **********/
@@ -629,6 +728,9 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(32, 32, 32);
+    min-height: 87vh;
+    width: 100%;
 }      
 
 #main-connexion h4{
@@ -673,6 +775,9 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(32, 32, 32);
+    min-height: 87vh;
+    width: 100%;
 }      
 
 #main-inscription h4{
