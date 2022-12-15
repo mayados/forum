@@ -9,6 +9,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 <div id="main-listposts">
     <h1>Sujet : <?= $topic->getTitre() ?></h1>
+    <a href="index.php?ctrl=forum&action=detailCategorie&id=<?= $topic->getCategorie()->getId() ?>">Retour</a>
     <div id="posts">
         <?php
         if(isset($_SESSION["user"]) && $_SESSION["user"]->getId() == $topic->getUser()->getId()){
