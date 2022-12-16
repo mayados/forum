@@ -53,7 +53,7 @@ $topics = $result["data"]['topics'];
                     <div class="topic-etat">
                         <?php
                         if(!App\Session::isAdmin()){
-                            if ($topic->getVerrouillage() == NULL) {
+                            if ($topic->getVerrouillage() == 0) {
                         ?>
                             <p>Ouvert</p>
                         <?php
@@ -71,7 +71,7 @@ $topics = $result["data"]['topics'];
                         ?>
                     <div class="topic-verrouillage">   
                         <?php
-                            if($topic->getVerrouillage()==NULL){
+                            if($topic->getVerrouillage()== 0){
                                 ?>
                              
                                     <p><a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId()?>">Clore</a></p>
