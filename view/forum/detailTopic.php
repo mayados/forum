@@ -8,7 +8,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
 ?>
 
 <div id="main-listposts">
-    <h1>Sujet : <?= $topic->getTitre() ?></h1>
+    <h1><?= $topic->getTitre() ?></h1>
     <a href="index.php?ctrl=forum&action=detailCategorie&id=<?= $topic->getCategorie()->getId() ?>">Retour</a>
     <div id="posts">
         <?php
@@ -21,7 +21,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
         foreach($posts as $post ){
             ?>
             <div class="post-topic">
-                <p><?=$post->getTexte()?> </p>
+                <p id="texte"><?=$post->getTexte()?> </p>
                 <p class="infos-post">Posté par 
                     <?php
                         if($post->getUser()==false){
