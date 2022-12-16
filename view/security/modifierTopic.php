@@ -7,7 +7,7 @@ $post = $result["data"]['post'];
 if($_SESSION["user"]->getId() == $topic->getUser()->getId()){
 ?>
 
-    <div id="ajout-topic">
+<div id="main-modifierTopic">
         <h4>Modifier le topic :</h4>
 
         <form id="form-topic" action="index.php?ctrl=security&action=updateTopic&id=<?= $topic->getId()?>&idPost=<?= $post->getId() ?>" method="post">
@@ -25,8 +25,9 @@ if($_SESSION["user"]->getId() == $topic->getUser()->getId()){
                 <input class="form-button" name="submit" type="submit" value="Envoyer">
             </div>
         </form>
-    </div>
 
 <?php
 }
-?>
+?>    
+</div>
+
