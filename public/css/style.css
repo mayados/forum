@@ -133,6 +133,7 @@ footer a{
     gap: 50px;
     color: white;
     background-color: rgb(32, 32, 32);
+    padding-bottom: 50px;
 }
 
 #main-listcategories h1{
@@ -303,7 +304,7 @@ footer a{
     text-shadow: 1px 1px 2px black;
 }
 
-#main-detailCategorie #form-topic{
+#main-detailCategorie #ajout-topic #form-topic{
     padding: 10px;
     backdrop-filter: blur(10px);
     display: flex;
@@ -316,26 +317,85 @@ footer a{
     padding: 20px;
 }
 
-#main-detailCategorie #form-topic .form-field{
+#main-detailCategorie #ajout-topic #form-topic .form-field{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
 }
 
-#main-detailCategorie #form-topic .form-field input, #main-detailCategorie #form-topic .form-field textarea{
+#main-detailCategorie #ajout-topic #form-topic .form-field input, #main-detailCategorie #form-topic .form-field textarea{
     width: 100%;
 }
 
-#main-detailCategorie #form-topic .form-field .form-button{
+#main-detailCategorie #ajout-topic #form-topic .form-field .form-button{
     height: 30px;
     width: 100px;
     text-align: center;
 }
 
-#main-detailCategorie #form-topic .form-field .form-button:hover{
+#main-detailCategorie #ajout-topic #form-topic .form-field .form-button:hover{
     cursor: pointer;
 }
+
+/* PREMIER TOPIC */
+
+#main-premierTopic{
+    background-color: rgb(24, 24, 24);
+    min-height: 87vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#main-premierTopic h4{
+    padding: 20px 0px 20px 0px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+#main-premierTopic #premierTopic{
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    text-align: center;    
+    width: 70%;
+    gap: 20px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    padding: 20px;
+    /* border: 1px solid red; */
+    min-height: 50vh;
+}
+
+#main-premierTopic #premierTopic-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#main-premierTopic #premierTopic #premierTopic-form .form-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#main-premierTopic #premierTopic #premierTopic-form .form-field #titre,
+#main-premierTopic #premierTopic #premierTopic-form .form-field textarea{
+    width: 100%;
+    padding-left: 8px;
+}
+
+#main-premierTopic #premierTopic #premierTopic-form .form-button{
+    width: 30%;
+    height: 50px;
+}
+
 
 
 
@@ -644,6 +704,10 @@ footer a{
 
 #main-users #list-users{
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 50px;
 }
 
 #main-users #list-users .user{
@@ -651,8 +715,9 @@ footer a{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    min-height: 40px;
+    min-height: 50px;
 }
+
 
 #main-users #list-users .user .user-pseudo, #main-users #list-users .user .user-date, #main-users #list-users .user .ban-user{
     text-align: center;
@@ -660,21 +725,27 @@ footer a{
 }
 
 #main-users #list-users .user:nth-child(even){
-    background-color: rgb(163, 164, 164);
+    background-color: rgb(116, 190, 190);
 }
 
 #main-users #list-users .user:nth-child(odd){
-    background-color: rgb(197, 200, 200);
+    background-color: rgb(185, 185, 185);
 }
+
+#main-users #list-users .user:hover{
+    background-color: gray;
+}
+
 
 
                                         /***************  NEWCATEGORIE PAGE ****************/
 #main-newCategorie{
-    background-color: orange;
+    background-color: rgb(36, 36, 36);
     min-height: 87vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 #main-newCategorie h4{
@@ -684,14 +755,29 @@ footer a{
 #main-newCategorie form{
     display: flex;
     flex-direction: column;
-    text-align: center;
-    border: 1px solid gray;
-    gap: 10px;
+    align-items: center;
+    /* border: 1px solid gray; */
+    gap: 30px;
+    width: 50%;
+    padding: 20px;
 }
 
 #main-newCategorie #categorie-nom{
     display: flex;
     flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#main-newCategorie form .form-button{
+    text-align: center;
+    width: 30%;
+    padding: 10px 20px 10px 20px;
+}
+
+#main-newCategorie form .form-button:hover{
+    cursor: pointer;
 }
 
 
@@ -777,6 +863,7 @@ footer a{
     align-items: center;
     min-height: 70px;
     border-radius: 5px;
+    position: relative;
 }
 
 #main-listTopics #topics-list .topic-element:hover{
@@ -806,13 +893,17 @@ footer a{
 }
 
 #main-listTopics .topic-element .topic-verrouillage{
-    width: 10%;
-    color: green;
+    position: absolute;
+    right: 40px;
+    top: 15%;
 }
 
 #main-listTopics .topic-element .supprimer-sujet{
+    position: absolute;
     width: 10%;
     color: green;
+    right: 20px;
+    bottom: 15%;
 }
 
 
