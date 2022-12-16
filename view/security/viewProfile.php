@@ -17,7 +17,6 @@ $lastPosts = $result["data"]['lastPosts'];
 
         <p>Adresse e-mail : <?= $_SESSION["user"]->getMail() ?></p>
     </div>
-
     <div class="sujets-posts">
         <div class="derniers-posts">
             <h4>Mes derniers posts :</h4>
@@ -32,7 +31,7 @@ $lastPosts = $result["data"]['lastPosts'];
                 }
             } else {
                 ?>
-                <p>Aucune activité</p>
+                <p class="zero-activity">Aucune activité</p>
             <?php
             }
             ?>
@@ -55,7 +54,7 @@ $lastPosts = $result["data"]['lastPosts'];
                         if ($topic->getVerrouillage() == 0) {
                         ?>
                             <div class="verrouillage-sujet">
-                                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>">Clore le sujet <i class="fa-solid fa-lock"></i></a>
+                                <a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>"><i class="fa-solid fa-lock"></i></a>
                             </div>
                         <?php
                         } else {
@@ -69,7 +68,7 @@ $lastPosts = $result["data"]['lastPosts'];
                 }
             } else {
                 ?>
-                <p>Aucun sujet pour le moment..</p>
+                <p class="zero-activity">Aucun sujet pour le moment..</p>
             <?php
             }
             ?>
