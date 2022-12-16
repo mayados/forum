@@ -462,25 +462,37 @@ footer a{
 #main-viewprofile .sujets-posts{
     margin-top: 100px;
     padding: 10px;
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
-    border: 3px solid rgb(97, 59, 59);
+    /* border: 3px solid rgb(97, 59, 59); */
+    /* gap: 20px; */
 }
 
 #main-viewprofile .sujets-posts h4{
     font-size: 1.5rem;
     text-align: center;
+    padding: 20px 0px 20px 0px;
+}
+
+#main-viewprofile .sujets-posts .zero-activity{
+    text-align: center;
+}
+
+#main-viewprofile .sujets-profil,
+#main-viewprofile .dernier-posts{
+    padding: 5px;
 }
 
 /*Partie Posts*/
 #main-viewprofile .derniers-posts{
-    border: 1px solid red;
-    width: 40%;
+    /* border: 1px solid red; */
+    border-right: 2px dashed white;
+    width: 50%;
 }
 
 #main-viewprofile .dernier-post{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     min-height: 40px;
     display: flex;
     align-items: center;
@@ -488,18 +500,20 @@ footer a{
 }
 
 
+
 /*Partie Sujets*/
 
 #main-viewprofile .sujets-profil{
-    border: 1px solid green;
+    /* border: 1px solid green; */
     width: 50%;
 }
 
 #main-viewprofile .sujet-profil{
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
+    justify-content: center;
     min-height: 40px;
     padding: 5px;
 }
@@ -616,7 +630,7 @@ footer a{
                                         /*************** USERS PAGE *****************/
 
 #main-users{
-    background-color: orange;
+    background-color: rgb(19, 19, 19);
     min-height: 87vh;
     display: flex;
     flex-direction: column;
@@ -646,11 +660,11 @@ footer a{
 }
 
 #main-users #list-users .user:nth-child(even){
-    background-color: rgb(242, 129, 129);
+    background-color: rgb(163, 164, 164);
 }
 
 #main-users #list-users .user:nth-child(odd){
-    background-color: rgb(195, 46, 46);
+    background-color: rgb(197, 200, 200);
 }
 
 
@@ -894,4 +908,57 @@ footer a{
 #main-inscription form #inscription{
     margin-top: 30px;
     width: 50%;
+}
+
+
+                                                /********* MODIFIERTOPIC PAGE **********/
+
+#main-modifierTopic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(32, 32, 32);
+    min-height: 87vh;
+    width: 100%;
+}
+
+#main-modifierTopic h4{
+    padding: 50px;
+}
+
+#main-modifierTopic form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 70%;
+    min-height: 40vh;
+}
+
+#main-modifierTopic form .form-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#main-modifierTopic form .form-field input{
+    height: 40px;
+}
+
+#main-modifierTopic form .form-field{
+    width: 80%;
+}
+
+#main-modifierTopic form input,textarea{
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    padding-left: 10px;
+}
+
+#main-modifierTopic form .form-button{
+    width: 30%;
+    padding: 10px 20px 10px 20px;
 }
