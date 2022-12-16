@@ -85,8 +85,8 @@ $topics = $result["data"]['topics'];
                             ?>
                      </div>  
                      <div class="supprimer-sujet">
-                                <a href="index.php?ctrl=security&action=deleteTopicAndPosts&id=<?= $topic->getId()?>">Supprimer</a>
-                            </div>
+                        <a href="index.php?ctrl=security&action=deleteTopicAndPosts&id=<?= $topic->getId()?>">Supprimer</a>
+                    </div>
                         <?php
                         }
                         ?>                        
