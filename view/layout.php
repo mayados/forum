@@ -25,8 +25,8 @@
                         /* Si l'user est admin on affiche cette portion */
                         if(App\Session::isAdmin()){
                             ?>
-                            <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                            <a href="index.php?ctrl=home&action=newCategorie">Créer une nouvelle catégorie</a>
+                            <a href="index.php?ctrl=home&action=users">Liste utilisateurs</a>
+                            <a href="index.php?ctrl=home&action=newCategorie">Nouvelle catégorie</a>
                             <?php
                         }
                         ?>
@@ -38,8 +38,8 @@
                             ?>
                             <a href="index.php?ctrl=security&action=viewProfile&id=<?=$_SESSION["user"]->getId() ?>"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
                             <a href="index.php?ctrl=security&action=deconnexion">Déconnexion</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a> 
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste des Categories</a>                             
+                            <a href="index.php?ctrl=forum&action=listTopics">Topics</a> 
+                            <a href="index.php?ctrl=forum&action=listCategories">Categories</a>                             
                             <?php
                         }
                         else{
@@ -47,8 +47,8 @@
                             ?>
                             <a href="index.php?ctrl=security&action=directionConnexion">Connexion</a>
                             <a href="index.php?ctrl=security&action=directionInscription">Inscription</a>
-                            <a href="index.php?ctrl=forum&action=listTopics">la liste des topics</a> 
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste des Categories</a>   
+                            <a href="index.php?ctrl=forum&action=listTopics">Topics</a> 
+                            <a href="index.php?ctrl=forum&action=listCategories">Categories</a>   
                         <?php
                         }
                    
