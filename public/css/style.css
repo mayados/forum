@@ -42,7 +42,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 7vh;
+    min-height: 7vh;
     padding: 0px 20px 0px 20px;
     font-size: 1.4rem;
 }
@@ -1052,4 +1052,114 @@ footer a{
 #main-modifierTopic form .form-button{
     width: 30%;
     padding: 10px 20px 10px 20px;
+}
+
+
+
+
+
+                                                    /***************  RESPONSIVE ********************/
+                                        
+/*Tablette*/
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+/*Menu de navigation*/
+
+    nav{
+        flex-direction: column;
+        /* min-height: 25vh; */
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0px 20px 0px;
+        gap: 15px;
+    }
+
+    nav #nav-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    nav #nav-right{
+    flex-direction: column;
+    align-items: center;
+    }
+
+    /*Users list*/
+
+    #main-users #list-users{
+        width: 80%;
+    }
+
+    #main-users #list-users .user{
+        min-height: 80px;
+    }
+
+    /*New Categorie*/
+    #main-newCategorie{
+        min-height: 70vh;
+        justify-content: center;
+    }
+
+    #main-newCategorie #categorie-nom input{
+        height: 40px;
+    }
+
+
+    /*Login Page*/
+
+    #main-connexion form{
+        width: 70%;
+    }
+    
+    #main-connexion form input{
+        width: 100%;
+    }
+    
+    #main-connexion{
+        justify-content: center;
+        min-height: 75vh;
+    }
+
+    /*Register Page*/
+
+    #main-inscription{
+        min-height: 75vh;
+        justify-content: center;
+    }
+
+    #main-inscription h4{
+        padding: 0px 0px 40px 0px;
+    }
+
+    #main-inscription form{
+        width: 80%;
+    }
+    
+    #main-inscription form input{
+        width: 100%;
+    }
+
+
+    /*ListTopics*/
+
+    #main-listTopics #topics-list{
+        width: 90%;
+    }
+
+    #main-listTopics  #topics-bar{
+        width: 90%;
+    }
+
+} 
+
+
+
+/*Mobile*/
+
+
+@media screen and (max-width: 600px) {
+
 }
