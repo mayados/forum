@@ -1,10 +1,15 @@
 
 
 <div id="main-home">
-    <h1>BIENVENUE SUR LE FORUM</h1>
-    <p>Le forum est un endroit d'échange respectueux entre membres inscrits.
-        Vous y trouverez des catégories et sujets variés. Vous avez également la possibilité d'en créer.
-    </p>
+    <h1>BIENVENUE</h1>
+    <div id="forum-presentation">
+        <p>Le forum est un endroit d'échange respectueux entre membres inscrits.
+            Vous y trouverez des catégories et sujets variés. Vous avez également la possibilité de créer des sujets.
+            Venez aider, lire ou partager.
+            Venez rejoindre la communauté ! 
+        </p>        
+    </div>
+
 
     <?php
         /* S'il y a déjà un utilisateur dans la $_SESSION, on affiche Déconnexion */
