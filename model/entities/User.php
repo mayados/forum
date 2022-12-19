@@ -12,6 +12,7 @@
         private $password;
         private $dateInscription;
         private $role;
+        private $bannir;
 
         /* Prend des tableaux associatifs et les transforme en objets ou tableaux d'objets (exemple : pour accéder à une propriété on va manipuler une méthode de l'objet ex ->get...) */
         public function __construct($data){         
@@ -140,5 +141,25 @@
         public function __toString()
         {
                 return $this->pseudo;
+        }
+
+        /**
+         * Get the value of bannir
+         */ 
+        public function getBannir()
+        {
+                return $this->bannir;
+        }
+
+        /**
+         * Set the value of bannir
+         *
+         * @return  self
+         */ 
+        public function setBannir($bannir)
+        {
+                $this->bannir = $bannir;
+
+                return $this;
         }
     }
