@@ -24,7 +24,7 @@ $idTopic = (isset($_GET["id"])) ? $_GET["id"] : null;
                 <p id="texte"><?=$post->getTexte()?> </p>
                 <p class="infos-post">Posté par 
                     <?php
-                        if($post->getUser()==false){
+                        if($post->getUser()->getBannir()==1){
                             ?>
                             Utilisateur banni le <?= $post->getDateCreation() ?>
                             <?php

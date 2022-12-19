@@ -26,6 +26,8 @@ $topics = $result["data"]['topics'];
         
             <?php
             foreach($topics as $topic ){
+                                // var_dump($topic->getUser()->getBannir());
+
                 ?>
                 <div class="topic-element">
                     <div class="topic-titre">
@@ -33,7 +35,7 @@ $topics = $result["data"]['topics'];
                     </div>
                     <div class="topic-createur">
                         <?php
-                            if($topic->getUser()==false){
+                            if($topic->getUser()->getBannir()==1){
                             ?>
                                 <p>Utilisateur banni</p>
                             <?php
