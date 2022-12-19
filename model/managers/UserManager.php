@@ -76,4 +76,33 @@
         }
 
 
+        /* Bannir un utilisateur */
+        public function ban($id){
+
+            $sql = "UPDATE ".$this->tableName."
+            SET bannir = 1
+            WHERE id_user = :id";
+
+            return $this->getSingleScalarResult(
+                DAO::select($sql, ['id' => $id]),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+
+        }
+
+        public function findBannirByMail($mail){
+            $sql = "SELECT *
+            FROM ".$this->tableName."
+            WHERE mail = :mail";
+
+            return $this->getOneOrNullResult(
+                /* Pas oublier de mettre le false ici car sinon ça fait une erreur, car on doit traiter tous les cas */
+                DAO::select($sql, ['mail' => $mail], false),
+                /* On retourne l'objet, c'est pour ça qu'on ajoute la ligne ci-dessous */
+                $this->className
+            );
+        }
+
+
     }
