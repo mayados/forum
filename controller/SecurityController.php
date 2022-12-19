@@ -93,7 +93,8 @@
                         $getPass = $userManager->findPasswordByMail($mail);
                         /* On trouve l'utilisateur associé au mail */
                         $getUser = $userManager->findUserByMail($mail);
-                    
+                        $getBannir = $userManager->findBannirByMail($mail);
+              
                         // $userManager->findUserByMail($mail);
 
                         /* S'il y a un utilisateur par rapport au mail entré */
@@ -101,20 +102,25 @@
                             /* Vérification du password entré avec le password haché en bdd */
                             $checkPassword = password_verify($password,$getPass['password']);
 
-                            /* Si les passwords correspondent */
+                            /* Si les passwords correspondent et que l'utilisateur n'est pas banni*/
                             if($checkPassword){
-                                // var_dump("test");
-                                /* On ajoute l'utilisateur dans la session */
-                                Session::setUser($getUser);
-                                // var_dump($getUser);die;
-                                /* On ajoute un message de succès */
-                                Session::addFlash('success','Bienvenue');
-                                /* On redirige vers la liste des catégories */
-                                // header('Location: index.php?ctrl=forum&action=listCategories');
-                                $this->redirectTo('home');
+                                if($getBannir->getBannir() == 0){
+                                    // var_dump("test");
+                                    /* On ajoute l'utilisateur dans la session */
+                                    Session::setUser($getUser);
+                                    // var_dump($getUser);die;
+                                    /* On ajoute un message de succès */
+                                    Session::addFlash('success','Bienvenue');
+                                    /* On redirige vers la liste des catégories */
+                                    // header('Location: index.php?ctrl=forum&action=listCategories');
+                                    $this->redirectTo('home');                                    
+                                }else{
+                                    Session::addFlash('error','vous avez été banni');
+                                    $this->redirectTo("security","directionConnexion");     
+                                }
                             }else{
                                  /* Si le password correspond pas avec celui de la bdd on envoie un message d'erreur */
-                                 Session::addFlash('error','Informations incorrectes');
+                                 Session::addFlash('error','Informations incorrectes ');
                                 $this->redirectTo("security","directionConnexion");     
                             }
                         }
@@ -181,7 +187,9 @@
 
             $userManager = new UserManager();
 
-            $userManager->delete($id);
+            // $userManager->delete($id);
+
+            $userManager->ban($id);
 
             Session::addFlash('success','Utilisateur banni');
 
